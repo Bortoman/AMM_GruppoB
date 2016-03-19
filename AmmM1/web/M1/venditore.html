@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Pagina del Venditore
 -->
 <html>
     <head>
@@ -15,8 +13,9 @@ and open the template in the editor.
     </head>
     <body>
         <header>
-            <h1>Venditore</h1>
+            <h1>GuitarShop</h1>
             <h2>Guitars, amplifiers & accessories</h2>
+            <h2>Venditore</h2>
         </header>
         
         <nav>
@@ -24,18 +23,23 @@ and open the template in the editor.
             <a href="descrizione.html">Descrizione</a>
         </nav>
         <div>
-            <p>Metti in vendita un nuovo prodotto:</p>
-            <form>
-                <input type="text" name="name" value="Nome">
-                <br/>
-                <input type="url" name="imgURL" value="URL immagine">
-                <br/>
-                <textarea rows="4" cols="20" name="description">Inserisci Descrizione</textarea>
-                <br/>
-                <p>Prezzo</p><input type="number" name="price">
-                <br/>
-                <p>Quantità disponibile</p><input type="number" name="quantity">
-                <br/>
+            <h3>Metti in vendita un nuovo prodotto:</h3>
+            <form action="GET">
+                <div>
+                    <label for="name">Nome Prodotto</label>
+                    <input type="text" name="name" id="name">
+                    <label for="imgURL">URL Immagine Prodotto</label>
+                    <input type="url" id="imgURL" name="imgURL">
+                    <label for="description">Descrizione Prodotto</label>
+                    <textarea rows="4" cols="20" name="description" id="description">Inserisci Descrizione</textarea>
+                    <label for="price">Prezzo Prodotto</label>
+                    <input type="number" name="price" id="price">
+                    <label for="quantity">Quantità Prodotto</label>
+                    <input type="number" name="quantity" id="quantity">
+                </div>
+                <div>
+                    <input type="submit" value="Conferma">
+                </div>
             </form>
         </div>
     </body>
