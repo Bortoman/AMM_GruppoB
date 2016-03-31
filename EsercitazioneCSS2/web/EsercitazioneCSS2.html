@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+Vogliamo ora creare l'impressione che nella pagina siano presenti delle schede (tab), come quelli usati dai browser per permettere di aprire più pagine nella stessa finestra.
+Di solito non sono dei veri contenitori, ma una semplice lista di link visualizzata in modo particolare.
+Un semplice procedimento per creare questa impressione è il seguente, lo applicheremo sulla lista contenuta nel div con id menu
+Selezionate un colore per delineare il contorno delle schede (es. nero)
+Impostare il bordo inferiore dell'intera lista (ul) di quel colore, scegliendo uno spessore
+Impostare il display degli li della lista in questione ad inline-block. Questo ci permette di impostare una dimensione fissa per tutte le schede (i nostri li) senza che questi vengano disegnati accapo.
+Impostare i bordi destro, sinistro e superiore degli li con il colore per il contorno delle schede
+Impostare i margini degli li ed il padding del tag ul in modo che il bordo destro e sinistro delle schede tocchi il bordo inferiore dell'ul
+La situazione dopo queste impostazioni, dovrebbe essere simile a questa:
+risultato della creazione dei tab
+Il passo che manca è quello di fare in modo che uno scheda sembri selezionata. Di solito, questa impressione viene data facendo in modo che il bordo sotto la scheda non si veda.
+Per far questo associamo una classe al tag li che ci permetta di modificare solo una scheda. Il trucco per cambiare la situazione si può applicare in due mosse:
+Impostare position: relative per tutti gli li
+Abbassare gli li di un numero di pixel uguale allo spessore del bordo dell'ul utilizzando la proprietà top
+impostare sia il bordo che il colore di sfondo della scheda selezionata allo stesso colore (bianco nell'esempio).
+risultato finale della creazione dei tab
+-->
+<html>
+    <head>
+        <title>noSeghisi</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style.css" rel="stylesheet" type="text/css">
+    </head>
+    
+    <body>
+    <div id="menu">
+        <ul>
+            <li class="home">
+                <a href="EsercitazioneCSS2.html" >Home</a>
+            </li>
+            <li class="anagrafica">
+                <a href="EsercitazioneCSS2.html" >Anagrafica</a>
+            </li>
+            <li class="libretto">
+                <a href="EsercitazioneCSS2.html" >Libretto</a>
+            </li>
+            <li class="iscrizione">
+                <a href="EsercitazioneCSS2.html" >Iscrizione</a>
+            </li>
+        </ul>
+    </div>
+        <div id="div1"></div>
+        <div id="div2"></div>
+        <div id="div3"></div>
+        <div id="div4"></div>
+    </body>
+</html>
