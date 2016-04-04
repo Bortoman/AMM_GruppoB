@@ -10,10 +10,11 @@ and open the template in the editor.
 header
 {
     top: 0px;
+    background: black;
     background-image: url('images/header_bg.jpg');
     background-repeat: no-repeat;
     width: 100%;
-    height: 450px;
+    height: 360px;
 }
 header h1{
     position:absolute;
