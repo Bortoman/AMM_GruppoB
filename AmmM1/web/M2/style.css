@@ -39,6 +39,17 @@ header h2{
 nav{
     position: absolute;
     top: 340px;
+    right: 10%;
     background: black;
+    
+}
+#navbar
+{
+    position:absolute;
+    top:420px;
+    left:10px;
+    background: whitesmoke;
+    width: 10%;
+    height: 800px;
     
 }
