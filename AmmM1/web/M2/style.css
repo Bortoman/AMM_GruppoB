@@ -38,11 +38,13 @@ header h2{
 }
 nav{
     position: absolute;
-    top: 360px;
+    top: 368px;
     font-size: 24pt;
     right: 0.4%;
     background: black;
-    
+    padding: 0px 20px 10px 20px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 #navbar
 {
