@@ -7,28 +7,42 @@ and open the template in the editor.
     Created on : 23-mar-2016, 18.26.44
     Author     : Alessandro
 */
+body{
+    background: wheat;
+    font-family: "Open-sans", serif;
+}
 header
 {
+    margin:0px;
     top: 0px;
     background: black;
     background-image: url('images/header_bg.jpg');
     background-repeat: no-repeat;
-    width: 100%;
+    right:0%;
+    left: 0%;
     height: 360px;
 }
 header h1{
     position:absolute;
     color: white;
     font-size: 72pt;
+    
 }
 header h2{
     position:absolute;
     color: white;
     font-size: 36pt;
+    
+}
+a:hover
+{
+    font-size: 25pt;
+    
+    font-weight: bold;
 }
 #pageid {
     position: absolute;
-    top: 340px;
+    top: 320px;
     background: black;
     font-size: 24pt;
     font-style: italic;
@@ -36,24 +50,107 @@ header h2{
     padding-right: 20px;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
+    
 }
 nav{
     position: absolute;
     top: 368px;
-    font-size: 24pt;
-    right: 0.4%;
+    font-size: 16pt;
+    left:50%;
+    width: 49.6%;
     background: black;
-    padding: 0px 20px 10px 20px;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
-#navbar
-{
+nav a{
+    margin-left: 5px;
+    color: white;
+    border-left: solid white;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.sidebar{
     position:absolute;
     top:420px;
     left:1.5%;
     background: whitesmoke;
-    width: 10%;
-    height: 800px;
+    width: 15%;
+    height: 1600px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+.sidebar p
+{
+    font-size: 14pt;
+    padding: 10px;
+}
+.sidebar a{
+    color:black;
+}
+.sidebar nav
+{
+    background: whitesmoke;
+    left:1.5%;
     
+        
+  
+    
+}
+article{
+    position:absolute;
+    top: 460px;
+    width: 80%;
+    height: 1600px;
+    background: whitesmoke;
+    left: 18%;
+    
+    border-top-right-radius: 6px;
+}
+article h2{
+    position:absolute;
+    top:-50px;
+    background: whitesmoke;
+    padding:5px 20px 20px 20px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    font-style: italic;
+}
+section{
+    position: absolute;
+    width:46%;
+    height: 40%;
+    background: rgba(90,90,90,0.7);
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+.guitars{
+    margin:2% auto auto 2%; 
+}
+.guitars h3{
+    margin-top: 0px;
+    background-image: url('images/Guitars.gif');
+    height: 60%;
+    font-size: 24pt;
+    font-weight: bolder;
+    text-align: justify;
+   
+}
+.amplifiers{
+     margin:2% auto 2% 52%;
+}
+.amplifiers h3{
+    margin-top: 0px;
+    background-image: url('images/Apmlifiers.gif');
+    height: 60%;
+}
+.accessories{
+    margin:47% auto auto 2%;
+}
+.accessories h3{
+    margin-top: 0px;
+    background-image: url('images/Accessories.gif');
+    height: 60%;
 }
