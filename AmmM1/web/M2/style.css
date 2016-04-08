@@ -225,13 +225,16 @@ td a:hover{
 .link{
     width: 200px;
 }
-.pari{
-    background: rgba(100,100,100,1);
+tr:nth-child(even){
+    background-image: url('images/Pari.jpg');
+    color:white;
 }
-.dispari{
-    background: rgba(175,175,175,1);
-    
+tr:nth-child(odd){
+    background-image: url('images/Dispari.jpg');
+    color:white;
+    text-shadow:2px 2px 30 gray;
 }
+
 footer{
     position:relative;
     background: black;
