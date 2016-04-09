@@ -20,21 +20,25 @@ Pagina di descrizone dei sito con elenco delle varie categorie d'acquisto
             <h2 id="subtitle">Guitars, amplifiers & accessories</h2>
             <h2 id="pageid">Descrizione</h2>
         </header>
-        <nav><a href="login.html">Log in</a></nav>
+        <nav class="navbar"><a href="login.html">Log in</a></nav>
+        <div class="dropdown">
+            <button class="dropbtn"></button>
+            <nav id="categories">
+                <p>Scegli tra:</p>
+                <ol> <!-- link interni alle categorie d'acquisto -->
+                    <li><a href='#guitars'>Chitarre</a></li>
+                    <li><a href='#amplifiers'>Amplificatori</a></li>
+                    <li><a href='#accessories'>Accessori</a></li>
+                    <li><a href='#pedals'>Pedaliere</a></li>
+                </ol>
+            </nav>
+        </div>
         <div class="sidebar">
         <p>
             Dai migliori produttori di strumenti musicali all'avanguardia a casa 
             tua in un solo click.<br/>Cosa aspetti?<br/>Definisci il tuo stile su GuitarShop!<br/>
             Acquista in tutta sicurezza, o metti in vendita i tuoi prodotti musicali.
         </p>
-        <nav id="navbar">
-            <p>Scegli tra:</p>
-            <ol> <!-- link interni alle categorie d'acquisto -->
-                <li><a href='#guitars'>Chitarre</a></li>
-                <li><a href='#amplifiers'>Amplificatori</a></li>
-                <li><a href='#accessories'>Accessori</a></li>
-            </ol>
-        </nav>
         </div>
         <article>
             <h2>Categorie:</h2>
@@ -58,6 +62,13 @@ Pagina di descrizone dei sito con elenco delle varie categorie d'acquisto
                 <h3 id='accessories'>Accessories</h3>
                 </div>
                 <p>Metallo per il sound più ricercato, pelle rifinita per il comfort assoluto.</p>
+            </section>
+            <section class="pedals">
+                <div id="pedalsH">
+                    
+                <h3 id='pedals'>Pedals</h3>
+                </div>
+                <p>Distorsione potente o sound morbido e vibrante? Costruisci il tuo stile con le migliori pedaliere per effetti!</p>
             </section>
         </article>
         <footer>

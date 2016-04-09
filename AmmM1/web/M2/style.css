@@ -1,4 +1,4 @@
-
+ 
 /*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -8,6 +8,10 @@ and open the template in the editor.
     Created on : 23-mar-2016, 18.26.44
     Author     : Alessandro
 */
+@font-face { /*font per i titoli della descrizione*/
+    font-family: amplify;
+    src: url(fonts/amplify.ttf);
+}
 body{
     background: wheat;
     font-family: 'Work Sans', sans-serif;
@@ -21,7 +25,8 @@ header{
 header h1{
     position:absolute;
     color: white;
-    font-size: 56pt;
+    font-size: 80pt;
+    font-family: amplify;
     left: 60px;  
 }
 header h2{
@@ -49,7 +54,7 @@ a:hover{
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
 }
-nav{
+.navbar{
     position: relative;
     font-size: 16pt;
     left:50%;
@@ -60,7 +65,7 @@ nav{
     padding-top: 10px;
     padding-bottom: 10px;
 }
-nav a{
+.navbar a{
     margin-left: 5px;
     color: white;
     text-decoration: none;
@@ -71,20 +76,20 @@ nav a{
 .sidebar{
     float: left;
     left:1%;
-    background: whitesmoke;
+    background: white;
     width: 15%;
     height: 1600px;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
 }
 .sidebar p{
-    font-size: 18pt;
-    padding: 10px;
+    font-size: 16pt;
+    padding: 20px;
 }
 .sidebar a{
     color:black;
 }
-.sidebar nav{ /*Quando è in modalità desktop non serve mostrare la barra di navigazione in quanto ogni categoria è visualizzata sulla schermata*/
+#categories{ /*Quando è in modalità desktop non serve mostrare la barra di navigazione in quanto ogni categoria è visualizzata sulla schermata*/
     display: none;
 }
 article{
@@ -92,14 +97,16 @@ article{
     top: 40px;
     width: 80%;
     height: 1600px;
-    background: whitesmoke;
-    left: 18%;
+    background: white;
+    background-image: url(images/pageback.JPG);
+    background-position: bottom;
+    background-repeat: repeat-x;     left: 18%;
     border-top-right-radius: 6px;
 }
-article h2, #clientpage h3{
+article h2, .page h3{
     position:absolute;
     top:-60px;
-    background: whitesmoke;
+    background: white;
     padding:5px 20px 20px 20px;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
@@ -110,7 +117,7 @@ section{
     position: absolute;
     width:46%;
     height: 600px;
-    background: rgba(90,90,90,0.7);
+    background: rgba(120,120,120,0.9);
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
 }
@@ -119,7 +126,8 @@ section h3{
    padding-top: 20%;
    text-align: center;
    text-shadow: 2px 2px 10px orangered;
-   font-size:46pt;
+   font-size:72pt;
+   font-family: amplify;
    color: white;
 }
 section p{
@@ -128,7 +136,7 @@ section p{
     margin-right: 5%;
     width:90%;
     height: 35%;
-    background: whitesmoke;
+    background: white;
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
     padding-right: 2%;
@@ -160,43 +168,43 @@ section p{
     background-image: url('images/Accessories.gif');
     height: 60%;
 }
-#clientpage{
+.pedals{
+     margin:660px auto 2% 52%;
+}
+#pedalsH{
+    margin-top: 0px;
+    background-image: url('images/Pedals.gif');
+    height: 60%;
+}
+.page{
     position: relative;
     width: 90%;
     height: 900px;
-    background: whitesmoke;
+    background: white;
+    background-image: url(images/pageback.JPG);
+    background-position: bottom;
+    background-repeat: repeat-x; 
     left:5%;
-    margin-bottom: 100px;
+    margin-bottom: 0px;
     margin-top: 50px;
-    border-bottom-right-radius: 6px;
-    border-bottom-left-radius: 6px;
     border-top-right-radius: 6px;
-    
+}
+.tabellapiccola{
+    display: none;
 }
 table{
     position:relative;
-    table-layout: fixed;
     width: 90%;
     top:40px;
     left:5%;
     border-collapse: collapse;
 }
-.table{
-/*    overflow: auto;*/
-}
-.intestazionetab{
-    background: gray;
-    border-style: double;
-    border-color: black;
-    font-size: 14pt;
-}
 td{
     height: 80px;
-    width: 100px;
     font-size: 9pt;
     text-align: center;
-    border: solid orangered;
-    border-width: 1px;
+    border: solid black;
+    border-width: 2px;
 }
 td a::before{
     content: url('images/Cart_logo.png');
@@ -204,40 +212,304 @@ td a::before{
 }
 td a{
     font-size: 8pt;
-    background: white;
+    background: linear-gradient(to top, orangered, orange);
     color:black;
     padding: 20px 5px 5px 5px;
-    border: double black;
-    border-radius: 6px;
+    border: solid black;
+    border-width: 4px;
+    border-top-color: gray;
     text-decoration: none;
+    text-transform: uppercase;
 }
 td a:hover{
-    background: rgba(160,160,160,0.5);
-    color: white;
-    border-color: white;
-    font-weight: normal;
-    font-style: italic;
+    color: black;
+    background: linear-gradient(to bottom, orangered, lightgoldenrodyellow);
 }
 .photo{
     width: 100px;
     background: white;
 }
 .link{
-    width: 200px;
+    width:200px;
+    background-image: url('images/amp_leather.jpg');
+    background-repeat: no-repeat;
+    border: none;
+    border-right: solid black;
+    
 }
-tr:nth-child(even){
+.qty{
+    width: 20px;
+}
+.pari{
     background-image: url('images/Pari.jpg');
+    background-repeat: repeat;
     color:white;
 }
-tr:nth-child(odd){
+/*tr:nth-child(even){
+    background-image: url('images/amps_texture.jpg');
+    color:white;
+}*/
+.dispari{
+    background-image: url('images/Dispari.jpg');
+    background-repeat: no-repeat;
+    color:white;
+}
+/*tr:nth-child(odd){
     background-image: url('images/Dispari.jpg');
     color:white;
-    text-shadow:2px 2px 30 gray;
+    
+}*/
+.intestazionetab{
+    background-image: url('images/amps_texture.jpg');
+    border-style: solid;
+    border-color: black;
+    border-top-color: gray;
+    border-width: thick;
+    font-size: 16px;
+    color: white;
+    background-repeat: no-repeat;
+}
+form{
+    position: relative;
+    width:40%;
+    top:50px;
+    bottom:5%;
+    height: auto;
+    left:30%;
+    background: rgba(120,120,120,0.9);
+    border-radius: 6px;
+}
+form input, form textarea{
+    width: 65%;
+    height:40px;
+    background: linear-gradient(to bottom, lightgray, white);
+    padding-left: 5%;
+    border: solid white;
+    border-radius: 6px;
 }
 
+form label{
+    position:relative;
+    top:15px;
+    color: white;
+    text-transform: uppercase;
+}
+.form-label{
+    position: relative;
+    width:32%;
+    height: 50px;
+    top:62px;
+    background-image: url('images/Form-pattern.jpg');
+    left: -5px;
+    text-align: center;
+    z-index: 1;
+    border: solid orangered;
+    border-radius: 6px;
+}
+.form-input{
+    position: relative;
+    top: 10px;
+    left: 30%
+}
+.rememberme{
+    position: relative;
+    top: 70px;
+    left: -20%;
+}
+.rememberme input{
+    height: 20px;
+}
+.rememberme label{
+    position: relative;
+    top: -5px;
+    left: -30%;
+    text-transform: none;
+}
+input[type=button], input[type=submit]{
+    margin: 150px 1% 1% 1%;
+    width:98%;
+    background-image: url('images/Form-pattern.jpg');
+    border: solid orangered;
+    color:white;
+    text-align: center;
+    text-transform: uppercase;
+}
+input[type=checkbox]:hover, input[type=button]:hover, input[type=submit]:hover{
+    opacity:0.7;
+}
+input[type=button]:active, input[type=submit]:active{
+    opacity:1;
+    box-shadow: 0px 0px 20px 6px orangered;
+}
 footer{
     position:relative;
     background: black;
     width:100%;
     height:100px;
+}
+@media only screen and (max-width: 480px)
+{
+    header{
+    background: black;
+    height: 60px;
+    }
+    header h1{
+    color: white;
+    font-size: 32pt;
+    font-family: amplify;
+    margin-top: 5px;
+    left: 20px;  
+    }
+    header h2{
+        display: none;
+    }
+    #pageid{
+        display: none;
+    }
+    .navbar{
+        font-size: 12pt;
+        left:0%;
+        width: 100%;
+        background: black;
+        border-radius: 0px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .sidebar{
+        display: none;
+    }
+    .dropbtn{
+        padding:15px;
+        background-image: url(images/dropdwn_1.png);
+        background-repeat: no-repeat;
+        border: none;
+        cursor: pointer;
+    }
+    .dropdown{
+        position: absolute;
+        top:15px;
+        right: 15px;
+    }
+    #categories p{
+        display: none;
+    }
+    #categories{
+        display: none;
+        position:absolute;
+        z-index: 2;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        right:0;
+    }
+    #categories a{
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    #categories a:hover{
+        background-color: #f1f1f1;
+        text-shadow: none;
+    }
+    .dropdown:hover .dropbtn{
+        opacity: 0.5;
+    }
+    .dropdown:hover #categories{
+        display: block;
+    }
+    article, .page{
+        width: 100%;
+        height: 100%;
+        top:40px;
+        margin-top: 10px;
+        
+        left:0%;
+    }
+    .page{
+        height: 1000px;
+    }
+    section{
+        position: relative;
+        width: 96%;
+        height: auto;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+    section h3{
+        margin-top: 0px;
+        padding-top: 20%;
+        text-align: center;
+        text-shadow: 2px 2px 10px orangered;
+        font-size: 46pt;
+        font-family: amplify;
+        color: white;
+    }
+    section p{
+        margin-top: 0px;
+        margin-left: 3%;
+        margin-right: 5%;
+        width:90%;
+        height:150px;
+        background: white;
+        border-bottom-right-radius: 6px;
+        border-bottom-left-radius: 6px;
+        padding: 2%;
+        font-size: 12pt;
+    }
+    article h2, .page h3{
+        font-size: 10pt;
+        top:-40px;
+    }
+    .guitars, .amplifiers, .accessories, .pedals{
+        margin:20px 2% 10px 2%;
+    }
+    .pedals{
+        margin-bottom: 100px;
+    }
+    #guitarH{
+        margin-top: 0px;
+        background-image: url('images/Guitars.gif');
+        height: 30%;
+    }
+    #amplifierH{
+        margin-top: 0px;
+        background-image: url('images/Apmlifiers.gif');
+        height: 30%;
+    }
+    #accessoriesH{
+        margin-top: 0px;
+        background-image: url('images/Accessories.gif');
+        height: 30%;
+    }
+    #pedalsH{
+        margin-top: 0px;
+        background-image: url('images/Pedals.gif');
+        height: 30%;
+    }
+    form{
+        width: 90%;
+        left: 5%;
+        margin-bottom: 150px;
+    }
+    textarea{
+        max-width: 65%;
+    }
+    table{
+        display: none;
+    }
+    .tabellapiccola{
+        display: initial;
+        position: relative;
+        margin-bottom: 200px;
+    }
+    .photo{
+        width:105px;
+    }
+    .link{
+        width: 60px;
+    }
+    .name{
+        width: 50px;
+    }
 }

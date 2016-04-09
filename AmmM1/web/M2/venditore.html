@@ -20,24 +20,44 @@ Pagina del Venditore
             <h2 id="pageid">Venditore</h2>
         </header>
         
-        <nav>
+        <nav class="navbar">
             <a href="login.html">Log in</a> 
             <a href="descrizione.html">Descrizione</a>
         </nav>
-        <div>
+        <div class="page">
             <h3>Metti in vendita un nuovo prodotto:</h3>
             <form method="GET">
-                <div>
-                    <label for="name">Nome Prodotto</label>
-                    <input type="text" name="name" id="name">
-                    <label for="imgURL">URL Immagine Prodotto</label>
-                    <input type="url" id="imgURL" name="imgURL">
-                    <label for="description">Descrizione Prodotto</label>
-                    <textarea rows="4" cols="20" name="description" id="description">Inserisci Descrizione</textarea>
-                    <label for="price">Prezzo Prodotto</label>
-                    <input type="number" name="price" id="price">
-                    <label for="quantity">Quantità Prodotto</label>
-                    <input type="number" name="quantity" id="quantity">
+                <div class="input_fields">
+                    <div class="form-label">
+                        <label for="name">Nome Prodotto</label>
+                    </div>
+                    <div class="form-input">
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div class="form-label">
+                        <label for="imgURL">URL Immagine</label>
+                    </div>
+                    <div class="form-input">
+                        <input type="url" id="imgURL" name="imgURL">
+                    </div>
+                    <div class="form-label">
+                        <label for="description">Descrizione</label>
+                    </div>
+                    <div class="form-input">
+                        <textarea rows="4" cols="20" name="description" id="description">Inserisci Descrizione</textarea>
+                    </div>
+                    <div class="form-label">
+                        <label for="price">Prezzo</label>
+                    </div>
+                    <div class="form-input">
+                        <input type="number" name="price" id="price">
+                    </div>
+                    <div class="form-label">
+                        <label for="quantity">Quantità</label>
+                    </div>
+                    <div class="form-input">
+                        <input type="number" name="quantity" id="quantity">
+                    </div>
                 </div>
                 <div>
                     <input type="submit" value="Conferma">
