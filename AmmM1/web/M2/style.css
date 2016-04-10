@@ -283,7 +283,7 @@ td a:hover{
     border-width: thick;
     font-size: 16px;
     color: white;
-    background-repeat: no-repeat;
+    background-repeat: repeat-x;
 }
 form{
     position: relative;
@@ -305,6 +305,11 @@ form input, form textarea{
     border-radius: 6px;
     box-shadow: 2px 2px 5px rgba(175,175,175,0.7);
 }
+form input:focus, form textarea:focus{
+    background: linear-gradient(to top, #ff9966, white);
+    box-shadow: 0px 0px 5px 2px #ff9966;
+}
+
 .form_logo{
     display: none;
 }
@@ -348,7 +353,7 @@ form label{
     left: -30%;
     text-transform: none;
 }
-input[type=button], input[type=submit]{
+input[type=button], input[type=submit], input[type=button]:focus, input[type=submit]:focus{
     margin: 150px 1% 1% 1%;
     width:98%;
     background-image: url('images/Form-pattern.jpg');
@@ -502,6 +507,14 @@ footer{
         max-width: 65%;
     }
     
+}
+@media only screen and (max-width: 768px){
+    table{
+        display: none;
+    }
+    .tabellapiccola{
+        display: inline-block;
+    }
 }
 @media only screen and (max-width: 480px)
 {
@@ -677,9 +690,10 @@ footer{
         }
     .tabellapiccola{
         font-size: 10pt;
-        display: initial;
+        display: inline-block;
         position: relative;
         margin-bottom: 200px;
+        box-shadow: none;
     }
     .photo{
         width:105px;
