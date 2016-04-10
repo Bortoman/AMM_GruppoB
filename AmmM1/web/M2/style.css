@@ -156,7 +156,7 @@ section p{
     padding-left: 2%;
     padding-top: 2%;
     font-size: 16pt;
-    box-shadow: 2px 2px 5px rgba(175,175,175,0.7);
+    box-shadow: 2px 2px 5px black;
 }
 .guitars{
     margin:2% auto 50% 2%; 
