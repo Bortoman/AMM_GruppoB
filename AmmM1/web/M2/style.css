@@ -28,7 +28,8 @@ header h1{
     color: white;
     font-size: 80pt;
     font-family: amplify;
-    left: 60px;  
+    left: 60px; 
+    text-shadow: 1px 4px 6px rgba(175,175,175,0.7);
 }
 header h2{
     color: white;
@@ -38,13 +39,13 @@ a:hover{
     text-decoration: underline;
     text-shadow: 2px 2px 10px orangered;
 }
-#subtitle{
+.subtitle{ /*Differenzio i titoli h2 all'interno dell'header'*/
     position: absolute;
     font-size:24pt;
     top: 280px;
     left:30px;
 }
-#pageid{
+.pageid{
     position: absolute;
     top: 340px;
     background: black;
@@ -90,9 +91,7 @@ a:hover{
     font-size: 16pt;
     padding: 20px;
 }
-.sidebar a{
-    color:black;
-}
+/*bottone poi utilizzato in modalità max-width 480px*/
 .dropbtn{
     display: none;
 }
@@ -121,9 +120,6 @@ article h2, .page h3{
     border-top-right-radius: 6px;
     font-style: italic;
     font-size: 18pt;
-    
-    
-    
 }
 section{
     position: absolute;
@@ -167,7 +163,7 @@ section p{
     height: 60%;
 }
 .amplifiers{
-     margin:2% auto 2% 52%;
+    margin:2% auto 2% 52%;
 }
 #amplifierH{
     margin-top: 0px;
@@ -183,7 +179,7 @@ section p{
     height: 60%;
 }
 .pedals{
-     margin:660px auto 2% 52%;
+    margin:660px auto 2% 52%;
 }
 #pedalsH{
     margin-top: 0px;
@@ -204,7 +200,7 @@ section p{
     border-top-right-radius: 6px;
     box-shadow: 2px 2px 5px rgba(175,175,175,0.7);
 }
-.tabellapiccola{
+.tabellapiccola{/*tabella per visualizzazione al di sotto dei 768px*/
     display: none;
 }
 table{
@@ -224,7 +220,6 @@ td{
 }
 td a::before{
     content: url('images/Cart_logo.png');
-   
 }
 td a{
     font-size: 8pt;
@@ -241,9 +236,10 @@ td a:hover{
     color: black;
     background: linear-gradient(to bottom, orangered, lightgoldenrodyellow);
 }
+/*Ridimensiono e personalizzo i vari campi della tabella in base al loro contenuto*/
 .photo{
     width: 100px;
-    background: white;
+    background: white;/*faccio in modo che sembri che le immagini riempano completamente la cella*/
 }
 .link{
     width:200px;
@@ -251,7 +247,6 @@ td a:hover{
     background-repeat: no-repeat;
     border: none;
     border-right: solid black;
-    
 }
 .qty{
     width: 20px;
@@ -261,20 +256,11 @@ td a:hover{
     background-repeat: repeat;
     color:white;
 }
-/*tr:nth-child(even){
-    background-image: url('images/amps_texture.jpg');
-    color:white;
-}*/
 .dispari{
     background-image: url('images/Dispari.jpg');
     background-repeat: no-repeat;
     color:white;
 }
-/*tr:nth-child(odd){
-    background-image: url('images/Dispari.jpg');
-    color:white;
-    
-}*/
 .intestazionetab{
     background-image: url('images/amps_texture.jpg');
     border-style: solid;
@@ -289,14 +275,13 @@ form{
     position: relative;
     width:40%;
     top:50px;
-    bottom:5%;
     height: auto;
     left:30%;
     background: rgba(120,120,120,0.9);
     border-radius: 6px;
     box-shadow: 2px 2px 5px rgba(175,175,175,0.7);
 }
-form input, form textarea{
+form input, form textarea{ /*contenuto input*/
     width: 65%;
     height:40px;
     background: linear-gradient(to bottom, lightgray, white);
@@ -305,22 +290,26 @@ form input, form textarea{
     border-radius: 6px;
     box-shadow: 2px 2px 5px rgba(175,175,175,0.7);
 }
-form input:focus, form textarea:focus{
+.form-input{/*contenitore input*/
+    position: relative;
+    top: 10px;
+    left: 30%
+}
+form input[type=text]:focus, [type=password]:focus, [type=url]:focus, [type=number]:focus, form textarea:focus{
     background: linear-gradient(to top, #ff9966, white);
     box-shadow: 0px 0px 5px 2px #ff9966;
 }
-
+/*Il logo manca in visualizzazione larga poichè l'header contiene già immagini*/
 .form_logo{
     display: none;
 }
-form label{
+form label{/*contenuto label*/
     position:relative;
     top:15px;
     color: white;
     text-transform: uppercase;
-    
 }
-.form-label{
+.form-label{/*contenitore label*/
     position: relative;
     width:32%;
     height: 50px;
@@ -333,11 +322,7 @@ form label{
     border-radius: 6px;
     box-shadow: 2px 2px 5px rgba(175,175,175,0.7);
 }
-.form-input{
-    position: relative;
-    top: 10px;
-    left: 30%
-}
+/*checkbox*/
 .rememberme{
     position: relative;
     top: 70px;
@@ -353,7 +338,9 @@ form label{
     left: -30%;
     text-transform: none;
 }
+/*Proprietà grafiche bottoni e campi input*/
 input[type=button], input[type=submit], input[type=button]:focus, input[type=submit]:focus{
+    /*Sia che il bottone sia o meno selezionato non eredita le proprietà del campo input:focus*/
     margin: 150px 1% 1% 1%;
     width:98%;
     background-image: url('images/Form-pattern.jpg');
@@ -363,9 +350,12 @@ input[type=button], input[type=submit], input[type=button]:focus, input[type=sub
     text-transform: uppercase;
 }
 input[type=checkbox]:hover, input[type=button]:hover, input[type=submit]:hover{
+    /*feedback visivo ulteriore che si passi sopra un campo cliccabile*/
     opacity:0.7;
 }
+
 input[type=button]:active, input[type=submit]:active{
+    /*feedback visivo del click sul bottone*/
     opacity:1;
     box-shadow: 0px 0px 20px 6px orangered;
 }
@@ -377,6 +367,7 @@ footer{
     box-shadow: 2px 2px 5px rgba(175,175,175,0.7);
 }
 @media only screen and (max-width: 1024px) and (min-width: 480px){
+    /*Visualizzazione Tablet/Laptop*/
     header{
         background: black;
         height: 60px;
@@ -386,52 +377,58 @@ footer{
         margin-top: 5px;
         left: 20px;  
     }
-    #subtitle{
+    .subtitle{
         position: absolute;
         font-size:12pt;
         top: 25px;
         left:40%;
     }
+    /*la navbar diventa larga tutta la pagina, ad estensione dell'header soprastante*/
     .navbar{
         font-size: 10pt;
         left:0%;
         width: 100%;
         background: black;
-        border-radius: 0px;
+        border-radius: 0px;/*Elimino i bordi smussati*/
         padding-top: 10px;
         padding-bottom: 10px;
     }
-    
-    #pageid{
+    /*Non inserisco il page-id per risparmiare spazio e rendere il layout più pulito*/
+    .pageid{
        display: none;
     }
-    .sidebar{
+    .sidebar{/*Allargo la sidebar poichè il layout passa da 3 a 2 colonne*/
         width: 27.5%;
         margin-top: 10px;
         height:2700px;
     }
-    .sidebar p{
+    .sidebar p{/*Adatto la grandezza del font a una pagina più stretta*/
         font-size: 12pt;
     }
+    /*Ora che la pagina ha solo due colonne le categorie e le relative descrizioni occupano molto spazio in verticale e può risultare utile usare un elenco con i link interni*/
     #categories p{
         display: none;
+        /**La visualizzazione di Scegli tra: risultava poco estetica, 
+         * ma al fine semantico mi pareva corretto mantenerla soprattuto nel
+         * caso in cui il browser non sia visivo prediligo una maggiore discorsività*/
     }
     #categories li{
-        float: left;
+        float: left;/*Posiziono i link sulla sinistra della navbar*/
     }
     #categories li a{
-        display: block;
+        display: block; /*Anche lo sfondo risulta cliccabile*/
         text-align: center;
         padding: 14px 16px;
-        
         text-decoration: none;
         color: black;
     }
     #categories ol{
-        list-style-type: none;
+        /*Elimino i numeri al fine di una visualizzazione più pulita*/
+        list-style-type: none; 
         margin: 0;
     }
     #categories{
+        /*La navbar delle categorie occupa quasi la totalità della larghezza della pagina e i link sono posizionati in linea*/
         position: relative;
         display: inline-block;
         width: 90%;
@@ -442,26 +439,26 @@ footer{
         border-bottom-left-radius: 6px;
         background-color: #f9f9f9;
     }
+    /*feedback visivo dello scorrimento tra le categorie durante la selezione*/
     #categories li a:hover{
         background: linear-gradient(to bottom, rgb(200,200,200), white);
         box-shadow: inset 1px 1px 5px 3px rgba(175,175,175,0.7);
         color: white;
     }
-    article, .page{
-        width: 100%;
-        top:40px;
-        margin-top: 10px;
-        left:0%;
-    }
+    /*Ingrandisco i contenitori delle varie pagine adattandoli al nuovo layout*/
     .page{
+        width: 100%;
+        top:50px;
+        left:0%;
         height: 1000px;
     }
     article{
         width: 70%;
         height: 2700px;
         left: 30%;
-        top:30px;
+        top:40px;
     }
+    /*Le sezioni della descrizione ora saranno disposte in un unica colonna*/
     section{
         float: left;
         left: 0%;
@@ -469,21 +466,16 @@ footer{
         height: 600px;
     }
     section p{
-        margin-top: 0px;
-        margin-left: 3%;
-        margin-right: 5%;
-        width:90%;
+        /*Ridimensiono il paragrafo nelle section*/
         height:150px;
-        background: white;
-        border-bottom-right-radius: 6px;
-        border-bottom-left-radius: 6px;
-        padding: 2%;
+        padding:2%;
         font-size: 12pt;
     }
     article h2, .page h3{
         font-size: 10pt;
         top:-40px;
     }
+    /*Visualizzazione su una colonna*/
     .guitars{
         margin:2% 2% 10px 2%;
     }
@@ -499,16 +491,18 @@ footer{
     #guitarH, #amplifierH, #accessoriesH, #pedalsH{
         height: 60%;
     }
+    /*Ora il form occupa quasi tutta la pagina*/
     form{
         width:90%;
         left:5%;
     }
+    /*Impedisco che la parte di descrzione vada a sforare oltre i limiti del form su una pagina stretta*/
     textarea{
         max-width: 65%;
     }
-    
 }
 @media only screen and (max-width: 768px){
+    /*Inserisco la nuova tabella più stretta per una visualizzazione migliore*/
     table{
         display: none;
     }
@@ -529,12 +523,11 @@ footer{
     margin-top: 5px;
     left: 20px;  
     }
+    /*Nascondo descrizione e pageid*/
     header h2{
         display: none;
     }
-    #pageid{
-        display: none;
-    }
+    /*Ridimensionamento della Navbar come su visualizzazione Tablet*/
     .navbar a{
         padding-left: 10px;
         padding-right: 10px;
@@ -548,10 +541,13 @@ footer{
         padding-top: 10px;
         padding-bottom: 10px;
     }
+    /*Sidebar sparisce, visualizzazione a una colonna*/
     .sidebar{
         display: none;
     }
+    /*Creo un dropdown meno per selezionare le categorie*/
     .dropbtn{
+        /*Proprietà del bottone*/
         display: inline;
         padding:15px;
         background-image: url(images/dropdwn_1.png);
@@ -559,23 +555,25 @@ footer{
         border: none;
         cursor: pointer;
     }
-    .dropdown{
+    .dropdown{/*Posizionamento bottone e menù*/
         position: absolute;
         top:15px;
         right: 15px;
     }
     #categories p{
-        display: none;
+        display: none;/*la visualizzazione avviene solo se si preme sul pulsante*/
     }
     #categories{
+        /*Impostazioni e stile del menu dropdown*/
         display: none;
         position:absolute;
         z-index: 2;
         background-color: #f9f9f9;
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        right:0;
+        right:0; /*il dropdown menu si sviluppa sulla sinistra del bottone*/
     }
+    /*feedback visivo dei link del menu dropdown*/
     #categories a{
         color: black;
         padding: 12px 16px;
@@ -587,18 +585,20 @@ footer{
         box-shadow: inset 1px 1px 5px 3px rgba(175,175,175,0.7);
         text-shadow:none;
     }
+    /*Feedback visivo del bottone dropdown*/
     .dropdown:hover .dropbtn{
         opacity: 0.5;
     }
     .dropdown:hover #categories{
+        /*Attivo la visualizazzione del menu quando ci si passa sopra col mouse, in caso di schermo tattile: alla pressione*/
         display: block;
     }
+    /*Ridimensiono le pagine per un layout a una colonna*/
     article, .page{
         width: 100%;
         height: 100%;
         top:40px;
         margin-top: 10px;
-        
         left:0%;
     }
     .page{
@@ -609,26 +609,13 @@ footer{
         width: 96%;
         height: auto;
         display: inline-block;
-        margin-bottom: 20px;
     }
+    /*Ridimensiono il font delle section*/
     section h3{
-        margin-top: 0px;
-        padding-top: 20%;
-        text-align: center;
-        text-shadow: 2px 2px 10px orangered;
         font-size: 46pt;
-        font-family: amplify;
-        color: white;
     }
     section p{
-        margin-top: 0px;
-        margin-left: 3%;
-        margin-right: 5%;
-        width:90%;
         height:150px;
-        background: white;
-        border-bottom-right-radius: 6px;
-        border-bottom-left-radius: 6px;
         padding: 2%;
         font-size: 12pt;
     }
@@ -642,26 +629,10 @@ footer{
     .pedals{
         margin-bottom: 100px;
     }
-    #guitarH{
-        margin-top: 0px;
-        background-image: url('images/Guitars.gif');
+    #guitarH, #amplifierH,#accessoriesH,#pedalsH{
         height: 30%;
     }
-    #amplifierH{
-        margin-top: 0px;
-        background-image: url('images/Apmlifiers.gif');
-        height: 30%;
-    }
-    #accessoriesH{
-        margin-top: 0px;
-        background-image: url('images/Accessories.gif');
-        height: 30%;
-    }
-    #pedalsH{
-        margin-top: 0px;
-        background-image: url('images/Pedals.gif');
-        height: 30%;
-    }
+    /*Posiziono il logo nei form*/
     .form_logo{
         display: block;
         position: absolute;
@@ -682,15 +653,11 @@ footer{
     textarea{
         max-width: 65%;
     }
-    table{
-        display: none;
-    }
     .intestazionetab{
-            font-size: 10pt;
-        }
+        font-size: 10pt;
+    }
     .tabellapiccola{
         font-size: 10pt;
-        display: inline-block;
         position: relative;
         margin-bottom: 200px;
         box-shadow: none;
@@ -705,9 +672,8 @@ footer{
         width: 50px;
     }
 }
-    
 @media only screen and (max-width: 380px){
-
+    /*Schermi ancora più piccoli necessitano una tabella più stretta*/
     .tabellapiccola{
         position:relative;
         width: 90%;
@@ -721,9 +687,7 @@ footer{
     .quantità{
         font-size: 6pt;
     }
-    .cart{
-        visibility: hidden;
-    }
+    /*diminuisco i font delle label nei form o si disporrebbe su due righe*/
     form label{
         font-size: 10pt;
     }
