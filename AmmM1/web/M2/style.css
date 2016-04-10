@@ -1,4 +1,4 @@
- 
+
 /*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -366,6 +366,11 @@ footer{
     height:100px;
     box-shadow: 2px 2px 5px rgba(175,175,175,0.7);
 }
+footer a{
+    position: relative;
+    top:30px;
+    left: 43%;
+}
 @media only screen and (max-width: 1024px) and (min-width: 480px){
     /*Visualizzazione Tablet/Laptop*/
     header{
@@ -684,7 +689,7 @@ footer{
     .qty{
         width: 4px;
     }
-    .quantità{
+    .quantita{
         font-size: 6pt;
     }
     /*diminuisco i font delle label nei form o si disporrebbe su due righe*/
