@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,6 +36,7 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession(true);
         if(request.getParameter("Submit")!=null){
             String username = request.getParameter("Username");
             String password = request.getParameter("Password");
@@ -43,8 +45,12 @@ public class Login extends HttpServlet {
             
             for(Utente u : listaUtenti){
                 if(u.getUsername().equals(username) && u.getPassword().equals(password)){
+                    session.setAttribute("loggedId",true);
+                    session.setAttribute("id", u.getId());
+                    
                     if ( u instanceof Professore){
                         request.setAttribute("professore", u);
+                        request.setAttribute("alunni", UtentiFactory.getInstance().getStudenteList());
                         request.getRequestDispatcher("professore_autenticato.jsp").forward(request, response);
                     }
                     else{

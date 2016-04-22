@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Registrazione Esami</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Alessandro Mainas">
+    </head>
+    <body>
+        <h1>Registrazione Esami Triennale & Magistrale</h1>
+        <img title="immagineunica" alt="immagine sito unica" src="img/images.png" width="200" height="200">
+        <!-- Nome Cognome matricola -->
+        <form action="GET">
+            <div>
+                <label for="NomeStudente">Nome Studente</label>
+                <input type="text" name="Nome" value="Nome" id="NomeStudente">
+                <label for="CognomeStudente">Cognome Studente</label>
+                <input type="text" name="Cognome" value="Cognome" id="CognomeStudente">
+                <label for="MatricolaStudente">Matricola Studente</label>
+                <input type="number" name="Matricola" id="MatricolaStudente">
+            </div>
+            <div>
+                <label for="NomeEsame">Nome Esame</label>
+                <select size="3" name="NomeEsame" id="NomeEsame">
+                    <option value="PR1">
+                        PR1
+                    </option>
+                     <option value="AMM">
+                        AMM
+                    </option>
+                    <option value="PR2">
+                        PR2
+                    </option>
+                    <option value="FDI">
+                        FDI
+                    </option>
+                    <option value="RC">
+                        RC
+                    </option>
+
+                </select>
+                <label for="VotoEsame">Voto Esame</label>
+                <input type="range" min="18" max="31" name="VotoEsame" id="VotoEsame">
+            </div>
+            <div>
+                <label for="Descrizione">Descrizione</label>
+                <textarea name="Descrizione" id="Descrizione" rows="10" cols="40">
+                    Descrizione Esame
+                </textarea>
+            </div>
+            <div>
+                <input type="submit" value="Invia">
+                <input type="reset" value="Resetta">
+            </div>
+            
+        </form>
+        <!-- NOme esame e voto -->
+        
+    </body>
+</html>

@@ -1,11 +1,3 @@
-<%-- 
-    Document   : professore_autenticato
-    Created on : 15-apr-2016, 9.53.11
-    Author     : Alessandro
---%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -76,35 +68,48 @@
             <!-- contenuto -->
             <div id="content">
                 <div class="input-form">
-                    <h3>Bentornato ${professore.nome} ${professore.cognome}</h3>
-                    <div>
-                        Id: ${professore.id}
-                    </div>
-                    <div>
-                        Corsi: 
-                        <ul>
-                            <c:forEach var="materia" items="${professore.corsiAssegnati}">
-                                <li>
-                                    ${materia.nome}
-                                </li>   
-                            </c:forEach>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>
-                            Registrazione Esami
-                        </h3>
-                        <ul>
-                            <c:forEach var="alunno" items="${alunni}">
-                                <li>
-                                    ${alunno.nome} ${alunno.cognome}
-                                    <a href="Registra?idAlunno=${alunno.id}">
-                                       Registra Esame
-                                    </a>
-                                </li>
-                            </c:forEach> 
-                        </ul>
-                    </div>
+                    <h3>Registrazione Esame</h3>
+                    <form action="Registra" method="GET">
+                        <!-- Nome, Cognome e Matricola Studente -->
+                        <div>
+                            <label for="NomeStudente">Nome Studente</label>
+                            <input type="text" name="NomeStudente" id="NomeStudente" />
+                            <label for="CognomeStudente">Cognome Studente</label>
+                            <input type="text" name="CognomeStudente" id="CognomeStudente" />       
+                            <label for="Matricola">Matricola Studente</label>
+                            <input type="number" name="Matricola" id="Matricola" />       
+                        </div>
+
+                        <!-- Lista esami e voto -->
+                        <div>
+                            <label for="ListaEsami">Lista Esami</label>
+                            <select size="3" name="ListaEsami" id="ListaEsami">
+                                <option value="PR1">Programmazione 1</option>
+                                <option value="PR2">Programmazione 2</option>
+                                <option value="AMM">Amministrazione di Sistema</option>
+                                <option value="EAI">Elaborazione di Immagini</option>
+                                <option value="FS">Fondamenti di Sistema</option>
+                                <option value="ARE2">Are 2</option>
+                            </select>
+
+                            <label for="voto">Voto</label>
+                            <input type="range" min="18" max="31"
+                                   name="voto" id="voto">
+                        </div>
+
+                        <!-- Descrizione -->
+                        <div>
+                            <label for="Descrizione">Descrizione</label>
+                            <textarea name="Descrizione" id="Descrizione"
+                                      cols="40" rows="10" >Descrizione Esame</textarea>
+                        </div>
+
+                        <!-- Pulsanti submit e reset -->
+                        <div>
+                            <input type="submit" name="submit" value="Invia">
+                            <input type="reset" name="reset" value="Cancella">
+                        </div>           
+                    </form>
                 </div>
             </div>
 
