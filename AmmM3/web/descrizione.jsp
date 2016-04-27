@@ -23,6 +23,7 @@ Pagina di descrizone dei sito con elenco delle varie categorie d'acquisto
     <body>
         
         <jsp:include page="header.jsp"/>
+        <h2 class="pageid">Descrizione</h2>
         <nav class="navbar"><a href="login.jsp">Log in</a></nav>
         <div class="dropdown">
             <button class="dropbtn"></button>

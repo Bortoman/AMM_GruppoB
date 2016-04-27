@@ -21,10 +21,11 @@ Pagina di Log In
     </head>
     <body>
         <jsp:include page="header.jsp"/>
+        <h2 class="pageid">Login</h2>
          <nav class="navbar">
-            <a href='descrizione.html'>Descrizione</a>
-            <a href='cliente.html'>Cliente</a>
-            <a href='venditore.html'>Venditore</a>
+            <a href='descrizione.jsp'>Descrizione</a>
+            <a href='cliente.jsp'>Cliente</a>
+            <a href='venditore.jsp'>Venditore</a>
         </nav>
         <div class="page">
             <h3>Effettua l'accesso: </h3>

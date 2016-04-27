@@ -22,9 +22,10 @@ Pagina Cliente
     </head>
     <body>
         <jsp:include page="header.jsp"/>
+        <h2 class="pageid">Cliente</h2>
         <nav class="navbar">
-            <a href="/login.html">Log in</a> 
-            <a href="/descrizione.html">Descrizione</a>
+            <a href="login.jsp">Log in</a> 
+            <a href="descrizione.jsp">Descrizione</a>
         </nav>
         <div class="page">
             <h3>Scegli i prodotti:</h3>

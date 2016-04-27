@@ -8,6 +8,6 @@
 <header>  
     <h1>GuitarShop</h1>
     <h2 class="subtitle">Guitars, amplifiers & accessories</h2>
-    <h2 class="pageid">Descrizione</h2>
+    
 </header>
 

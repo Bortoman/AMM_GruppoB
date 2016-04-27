@@ -5,12 +5,8 @@
  */
 package amm.milestone3;
 
-import amm.milestone3.Classi.Cliente;
-import amm.milestone3.Classi.Utente;
-import amm.milestone3.Classi.UtentiFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +18,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Alessandro Mainas
  */
-@WebServlet(name = "Login", urlPatterns = {"/Login"})
-public class Login extends HttpServlet {
+@WebServlet(name = "Venditore", urlPatterns = {"/Venditore"})
+public class Venditore extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,33 +33,8 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession(true);
-        if(request.getParameter("Submit")!=null){
-            String username = request.getParameter("usrname");
-            String password = request.getParameter("pswd");
-            
-            ArrayList<Utente> listaUtenti = UtentiFactory.getInstance().getUserList();
-            
-            for(Utente u : listaUtenti){
-                if(u.getUsername().equals(username) && u.getPassword().equals(password)){
-                    session.setAttribute("loggedIn", true);
-                    session.setAttribute("id", u.getId());
-                    
-                    if (u instanceof Cliente){
-                        request.setAttribute("cliente", u);
-                        request.setAttribute("objectSale", UtentiFactory.getInstance().getOggettiList());
-                        request.getRequestDispatcher("/cliente.jsp").forward(request, response);
-                    }
-                    else{
-                        request.setAttribute("venditore", u);
-                        request.getRequestDispatcher("/venditore.jsp").forward(request, response);
-                    }
-                }
-            }
-        }
-        session.setAttribute("loggedIn", false);
-        request.setAttribute("messaggio", "Credenziali non corrette");
-        request.getRequestDispatcher("/login.jsp").forward(request, response);
+        HttpSession session = request.getSession(false);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
