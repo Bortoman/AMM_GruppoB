@@ -48,7 +48,7 @@ public class Login extends HttpServlet {
             for(Utente u : listaUtenti){
                 if(u.getUsername().equals(username) && u.getPassword().equals(password)){
                     session.setAttribute("loggedIn", true);
-                    session.setAttribute("idutente", u.getId());
+                    session.setAttribute("id", u.getId());
                     
                     if (u instanceof Cliente){
                         request.setAttribute("cliente", u);

@@ -30,12 +30,13 @@
         <div class="recap">
             <ul>
                 <li>${oggetto.getName()}</li>
-                    <li><image src="${oggetto.getImageURL()}"></li>
+                    <li><image src="${oggetto.getImageURL()}" width="300" heigth="300"></li>
                         <li>${oggetto.getDescription()}</li>
                              <li>${oggetto.getPrice()}</li>
                                  <li> ${oggetto.getQuantity()}</li>
             </ul>
-                                 <button name="Submit" type="submit" value="conferma"><a href="Cliente?id=${oggetto.getId()}">CONFERMA ACQUISTO</a></button>
+                                 <button name="Submit" type="submit" value="conferma"><a href="Cliente?idogg=${oggetto.getId()}">CONFERMA ACQUISTO</a></button>
+                                 <p>${pagato}</p>
         </div>
         </div>
         <jsp:include page="footer.jsp"/>

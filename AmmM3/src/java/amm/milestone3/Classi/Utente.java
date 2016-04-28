@@ -14,7 +14,7 @@ public abstract class Utente {
     private int id;
     private String firstName;
     private String lastName;
-    
+    private double saldo;
     private String username;
     private String password;
     
@@ -93,6 +93,20 @@ public abstract class Utente {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * @return the saldo
+     */
+    public double getSaldo() {
+        return saldo;
+    }
+
+    /**
+     * @param saldo the saldo to set
+     */
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
     
     

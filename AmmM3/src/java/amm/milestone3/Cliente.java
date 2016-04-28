@@ -6,6 +6,7 @@
 package amm.milestone3;
 
 import amm.milestone3.Classi.OggettiInVendita;
+import amm.milestone3.Classi.Utente;
 import amm.milestone3.Classi.UtentiFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -35,19 +36,31 @@ public class Cliente extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession(true);
-        session.setAttribute("loggedIn", true);
-        
-            if(request.getParameter("id")!=null){
-            Integer id = Integer.parseInt(request.getParameter("id"));
-            request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(id));
+        HttpSession session = request.getSession(false);
+            
+            if(request.getParameter("idOggetto")!=null){
+            Integer idOggetto = Integer.parseInt(request.getParameter("idOggetto"));
+            request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(idOggetto));
             request.getRequestDispatcher("carrello.jsp").forward(request, response);
-             }
-            if(request.getParameter("Submit")!=null){
+            }
+            
+            if(request.getParameter("idogg")!=null){
                 
+                Utente cliente = UtentiFactory.getInstance().getCliente(0);
+                OggettiInVendita oggetto = UtentiFactory.getInstance().getOggetto(1);
+                if( cliente.getSaldo() > oggetto.getPrice()){
+                    cliente.setSaldo(cliente.getSaldo() - oggetto.getPrice());
+                    request.setAttribute("pagato", "Pagamento avvenuto con successo");
+                    request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(1));
+                    request.getRequestDispatcher("carrello.jsp").forward(request, response);
+                }
+                else{
+                    request.setAttribute("pagato", "Pagamento non completato, fondi insufficienti :(");
+                    request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(1));
+                    request.getRequestDispatcher("carrello.jsp").forward(request, response);
+                }
             }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
