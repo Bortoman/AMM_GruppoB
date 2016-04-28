@@ -12,5 +12,7 @@ package amm.milestone3.Classi;
 public class Cliente extends Utente{
     public Cliente(){
         super();
+        
     }
+    
 }

@@ -25,10 +25,12 @@ Pagina Cliente
         <h2 class="pageid">Cliente</h2>
         <nav class="navbar">
             <a href="login.jsp">Log in</a> 
-            <a href="descrizione.jsp">Descrizione</a>
+            <a href="cliente.jsp">Descrizione</a>
         </nav>
         <div class="page">
             <h3>Scegli i prodotti:</h3>
+            <c:choose>
+                <c:when test="${loggedIn==true && cliente.getId() == id}">
             <table> <!-- Tabella contenente i prodotto acquistabili dai clienti -->
                 <tr class="intestazionetab">
                     <th>Foto</th>
@@ -52,7 +54,7 @@ Pagina Cliente
                             <td>${oggetto.getDescription()}</td>
                                 <td> $ ${oggetto.getPrice()} </td>
                                     <td class="qty"> ${oggetto.getQuantity()}</td>
-                                    <td class="link"><a href="/cliente.html ">Aggiungi al carrello</a></td>
+                                    <td class="link"><a href="Cliente?id=${oggetto.getId()}">Aggiungi al carrello</a></td>
                 </tr>
                 </c:forEach>
                 
@@ -77,20 +79,16 @@ Pagina Cliente
                        <td>${oggetto.getName()}</td>
                                 <td> $ ${oggetto.getPrice()} </td>
                                     <td class="qty"> ${oggetto.getQuantity()}</td>
-                                    <td class="link"><a href="cliente.html "></a></td>
+                                    <td class="link"><a href="Cliente?id=${oggetto.getId()}"></a></td>
                 </tr>
                 </c:forEach>
             </table>
            </div>
-        
-        <footer>
-            <p>
-                <a href="http://jigsaw.w3.org/css-validator/check/referer">
-                    <img style="border:0;width:88px;height:31px"
-                        src="http://jigsaw.w3.org/css-validator/images/vcss"
-                        alt="CSS Valido!" />
-                </a>
-            </p>
-        </footer>
+            </c:when>
+                <c:otherwise>
+                    <jsp:include page="access_denied.jsp"/>
+                </c:otherwise>
+        </c:choose>
+        <jsp:include page="footer.jsp"/>
     </body>
 </html>

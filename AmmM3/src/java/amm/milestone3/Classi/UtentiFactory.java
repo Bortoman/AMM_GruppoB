@@ -131,7 +131,7 @@ public class UtentiFactory {
         
         //Venditori
         Venditore venditore_1 = new Venditore();
-        venditore_1.setId(0);
+        venditore_1.setId(2);
         venditore_1.setFirstName("Fernando");
         venditore_1.setLastName("Luiz");
         venditore_1.setPassword("l_Fernando2");
@@ -139,7 +139,7 @@ public class UtentiFactory {
         listaVenditori.add(venditore_1);
         
         Venditore venditore_2 = new Venditore();
-        venditore_2.setId(1);
+        venditore_2.setId(4);
         venditore_2.setFirstName("Chiara");
         venditore_2.setLastName("Matterport");
         venditore_2.setPassword("m_chiara3");
@@ -181,6 +181,9 @@ public class UtentiFactory {
                 return o;
         }
         return null;
+    }
+    public void aggiungiOggetto(OggettiInVendita o){
+        listaOggetti.add(o);
     }
     public ArrayList<Utente> getUserList(){
         ArrayList<Utente> listaUtenti = new ArrayList<>();

@@ -30,9 +30,10 @@ Pagina del Venditore
         </nav>
         <div class="page">
             <h3>Metti in vendita un nuovo prodotto:</h3>
-            <c:if test="${loggedIn == true && venditore.getId()==id}">
+            <c:choose>
+            <c:when test="${loggedIn == true && venditore.getId()==id}">
                 <div class="form_logo"></div>
-                    <form method="GET">
+                    <form method="post" action="venditore.html">
                             <div class="form-label">
                                 <label for="name">Nome Prodotto</label>
                             </div>
@@ -64,21 +65,15 @@ Pagina del Venditore
                                 <input type="number" name="quantity" id="quantity">
                             </div>
                         <div>
-                            <input type="submit" value="Conferma">
+                            <input type="submit" name="Submit" value="Conferma">
                         </div>
                     </form>
                 </div>
-            </c:if>
-        <c:if test="${loggedIn == false}">
-            <div class="access_denied">
-                <h2>
-                    Accesso Negato!
-                </h2>
-                <p>
-                    Attenzione, non hai le autorizzazioni necessarie per accedere a questo contenuto, effettua il login per continuare!
-                </p>
-            </div>
-        </c:if>
+            </c:when>
+        <c:otherwise>
+            <jsp:include page="access_denied.jsp"/>
+        </c:otherwise>
+    </c:choose>
         <jsp:include page="footer.jsp"/>
     </body>
 </html>

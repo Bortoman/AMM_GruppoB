@@ -5,8 +5,12 @@
  */
 package amm.milestone3;
 
+import amm.milestone3.Classi.OggettiInVendita;
+import amm.milestone3.Classi.Utente;
+import amm.milestone3.Classi.UtentiFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Alessandro Mainas
  */
-@WebServlet(name = "Venditore", urlPatterns = {"/Venditore"})
+@WebServlet(name = "Venditore", urlPatterns = {"/venditore.html"})
 public class Venditore extends HttpServlet {
 
     /**
@@ -33,7 +37,27 @@ public class Venditore extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession(false);
+        if(request.getParameter("Submit")!=null){
+            String name = request.getParameter("name");
+            String imgURL = request.getParameter("imgURL");
+            String description = request.getParameter("description");
+            Integer price = Integer.parseInt(request.getParameter("price"));
+            Integer quantity = Integer.parseInt(request.getParameter("quantity"));
+            
+            Integer n=UtentiFactory.getInstance().getOggettiList().size();
+            Integer id = n;
+            OggettiInVendita oggetto_n = new OggettiInVendita();
+            oggetto_n.setName(name);
+            oggetto_n.setImageURL(imgURL);
+            oggetto_n.setDescription(description);
+            oggetto_n.setPrice(price);
+            oggetto_n.setQuantity(quantity);
+            oggetto_n.setId(id);
+            request.setAttribute("oggetto", oggetto_n);
+            request.getRequestDispatcher("inserimento_confermato.jsp").forward(request, response);
+            
+           
+        }
         
     }
 

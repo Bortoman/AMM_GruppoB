@@ -325,6 +325,19 @@ form label{/*contenuto label*/
     border-radius: 6px;
     box-shadow: 2px 2px 5px rgba(175,175,175,0.7);
 }
+.recap{ 
+    position: relative;
+    width: 50%;
+    left:20%;
+    background: whitesmoke;
+    border: dotted wheat 5px;
+    box-shadow: 2px 2px 5px gray;
+    padding: 50px;
+    top: 50px;
+}
+.recap p{
+    color:  #990000;
+}
 /*checkbox*/
 .rememberme p{
     position: relative;
@@ -515,6 +528,16 @@ footer a{
     #guitarH, #amplifierH, #accessoriesH, #pedalsH{
         height: 60%;
     }
+    .recap{ 
+        position: relative;
+        width: 60%;
+        left:10%;
+        background: whitesmoke;
+        border: dotted wheat 5px;
+        box-shadow: 2px 2px 5px gray;
+        padding: 50px;
+        top: 50px;
+    }
     /*Ora il form occupa quasi tutta la pagina*/
     form{
         width:90%;
@@ -655,6 +678,16 @@ footer a{
     }
     #guitarH, #amplifierH,#accessoriesH,#pedalsH{
         height: 30%;
+    }
+    .recap{ 
+        position: relative;
+        width: 60%;
+        left:7%;
+        background: whitesmoke;
+        border: dotted wheat 5px;
+        box-shadow: 2px 2px 5px gray;
+        padding: 50px;
+        top: 50px;
     }
     /*Posiziono il logo nei form*/
     .form_logo{
