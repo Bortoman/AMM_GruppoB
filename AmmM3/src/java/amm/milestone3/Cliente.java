@@ -45,18 +45,18 @@ public class Cliente extends HttpServlet {
             }
             
             if(request.getParameter("idogg")!=null){
-                
-                Utente cliente = UtentiFactory.getInstance().getCliente(0);
-                OggettiInVendita oggetto = UtentiFactory.getInstance().getOggetto(1);
+                Integer idCliente = (Integer)session.getAttribute("id");
+                Utente cliente = UtentiFactory.getInstance().getCliente(idCliente);
+                OggettiInVendita oggetto = UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idogg")));
                 if( cliente.getSaldo() > oggetto.getPrice()){
                     cliente.setSaldo(cliente.getSaldo() - oggetto.getPrice());
                     request.setAttribute("pagato", "Pagamento avvenuto con successo");
-                    request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(1));
+                    request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idogg"))));
                     request.getRequestDispatcher("carrello.jsp").forward(request, response);
                 }
                 else{
                     request.setAttribute("pagato", "Pagamento non completato, fondi insufficienti :(");
-                    request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(1));
+                    request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idogg"))));
                     request.getRequestDispatcher("carrello.jsp").forward(request, response);
                 }
             }

@@ -31,7 +31,7 @@ Pagina del Venditore
         <div class="page">
             <h3>Metti in vendita un nuovo prodotto:</h3>
             <c:choose>
-            <c:when test="${loggedIn == true && venditore.getId()==idu}">
+            <c:when test="${loggedIn == true && venditore.getId()==id}">
                 <div class="form_logo"></div>
                     <form method="post" action="venditore.html">
                             <div class="form-label">

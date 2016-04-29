@@ -29,6 +29,8 @@ Pagina Cliente
         </nav>
         <div class="page">
             <h3>Scegli i prodotti:</h3>
+            <c:choose>
+            <c:when test="${loggedIn == true && cliente.getId()==id}">
             <table> <!-- Tabella contenente i prodotto acquistabili dai clienti -->
                 <tr class="intestazionetab">
                     <th>Foto</th>
@@ -81,7 +83,14 @@ Pagina Cliente
                 </tr>
                 </c:forEach>
             </table>
-           </div>
+           
+          </c:when>
+        <c:otherwise>
+            <jsp:include page="access_denied.jsp"/>
+        </c:otherwise>
+            
+            </c:choose>
+                </div>
         <jsp:include page="footer.jsp"/>
     </body>
 </html>

@@ -117,7 +117,7 @@ public class UtentiFactory {
         cliente_1.setId(1);
         cliente_1.setFirstName("Mario");
         cliente_1.setLastName("Rossi");
-        cliente_1.setSaldo(900.0);
+        cliente_1.setSaldo(90000.0);
         cliente_1.setPassword("0");
         cliente_1.setUsername("mariorossi");
         listaClienti.add(cliente_1);
