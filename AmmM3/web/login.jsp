@@ -12,6 +12,7 @@ Pagina di Log In
 <html>
     <head>
         <title>Log in</title>
+        <link rel="icon" href="images/electro.png">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Alessandro Mainas">
@@ -30,7 +31,7 @@ Pagina di Log In
         <div class="page">
             <h3>Effettua l'accesso: </h3>
             <div class="form_logo"></div>
-                <form method="post" action="Login">
+                <form method="post" action="login.html">
                     
                     <div class="input_fields">
                         <div class="form-label">

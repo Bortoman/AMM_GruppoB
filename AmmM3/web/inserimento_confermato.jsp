@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Conferma Inserimento</title>
+        <link rel="icon" href="images/electro.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Alessandro Mainas">
         <meta name="conferma" content="E-commerce incentrato sulla compravendita di chitarre e accessori">

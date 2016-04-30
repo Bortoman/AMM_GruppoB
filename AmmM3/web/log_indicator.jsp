@@ -10,7 +10,7 @@
 <div class="log_indicator">
     <c:if test="${ loggedIn == true}">
         <a class="droptoggle">${firstname} ${lastname}</a>
-        <a id="logout" href="Logout?">Log Out</a>
+        <a id="logout" href="logout.html?">Log Out</a>
     </c:if>
         <c:if test="${ loggedIn == false || loggedIn == null}">
             <p>

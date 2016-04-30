@@ -56,7 +56,7 @@ Pagina Cliente
                             <td>${oggetto.getDescription()}</td>
                                 <td> $ ${oggetto.getPrice()} </td>
                                     <td class="qty"> ${oggetto.getQuantity()}</td>
-                                    <td class="link"><a href="Cliente?idOggetto=${oggetto.getId()}">Aggiungi al carrello</a></td>
+                                    <td class="link"><a href="cliente.html?idOggetto=${oggetto.getId()}">Aggiungi al carrello</a></td>
                 </tr>
                 </c:forEach>
                 

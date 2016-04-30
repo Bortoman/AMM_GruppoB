@@ -12,6 +12,7 @@ Pagina di descrizone dei sito con elenco delle varie categorie d'acquisto
 <html>
     <head>
         <title>Guitarshop</title>
+        <link rel="icon" href="images/electro.png">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Alessandro Mainas">

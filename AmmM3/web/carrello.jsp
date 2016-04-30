@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Carrello</title>
+        <link rel="icon" href="images/electro.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Alessandro Mainas">
         <meta name="carrello" content="carrello">
@@ -35,7 +36,7 @@
                              <li>${oggetto.getPrice()}</li>
                                  <li> ${oggetto.getQuantity()}</li>
             </ul>
-                                 <button name="Submit" type="submit" value="conferma"><a href="Cliente?idogg=${oggetto.getId()}">CONFERMA ACQUISTO</a></button>
+                                 <button name="Submit" type="submit" value="conferma"><a href="cliente.html?idogg=${oggetto.getId()}">CONFERMA ACQUISTO</a></button>
                                  <p>${pagato}</p>
         </div>
         </div>
