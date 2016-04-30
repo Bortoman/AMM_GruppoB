@@ -50,6 +50,14 @@ public class Cliente extends HttpServlet {
                 OggettiInVendita oggetto = UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idogg")));
                 if( cliente.getSaldo() > oggetto.getPrice()){
                     cliente.setSaldo(cliente.getSaldo() - oggetto.getPrice());
+                    if( oggetto.getQuantity() == 0){
+                        request.setAttribute("pagato", "Pagamento non completato, disponibilità esaurita!");
+                        request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idogg"))));
+                        request.getRequestDispatcher("carrello.jsp").forward(request, response);
+                    }
+                    else{
+                        oggetto.setQuantity(oggetto.getQuantity()-1);
+                    }
                     request.setAttribute("pagato", "Pagamento avvenuto con successo");
                     request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idogg"))));
                     request.getRequestDispatcher("carrello.jsp").forward(request, response);

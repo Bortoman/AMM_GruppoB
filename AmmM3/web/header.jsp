@@ -6,8 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <header>  
-    <h1>GuitarShop</h1>
+    <h1 id="top">GuitarShop</h1>
+    <jsp:include page="log_indicator.jsp"/>
     <h2 class="subtitle">Guitars, amplifiers & accessories</h2>
-    
 </header>
 

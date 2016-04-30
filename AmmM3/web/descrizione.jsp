@@ -23,7 +23,8 @@ Pagina di descrizone dei sito con elenco delle varie categorie d'acquisto
     <body>
         
         <jsp:include page="header.jsp"/>
-        <h2 class="pageid">Descrizione</h2>
+        
+        <h2 id="pageid" class="pageid">Descrizione</h2>
         <nav class="navbar"><a href="login.jsp">Log in</a></nav>
         <div class="dropdown">
             <button class="dropbtn"></button>
@@ -37,6 +38,7 @@ Pagina di descrizone dei sito con elenco delle varie categorie d'acquisto
                 </ol>
             </nav>
         </div>
+        <!-- <div class="toplink"><a href="#top">top</a></div> -->
         <div class="sidebar">
         <p>
             Dai migliori produttori di strumenti musicali all'avanguardia a casa 

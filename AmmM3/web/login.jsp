@@ -31,7 +31,7 @@ Pagina di Log In
             <h3>Effettua l'accesso: </h3>
             <div class="form_logo"></div>
                 <form method="post" action="Login">
-                    <input type="hidden" name="cmd" value="login.html">
+                    
                     <div class="input_fields">
                         <div class="form-label">
                             <label for="usrname">UserName</label>

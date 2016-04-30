@@ -13,6 +13,7 @@ Pagina Cliente
 <html>
     <head>
         <title>Cliente</title>
+        <link rel="icon" href="images/electro.png">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Alessandro Mainas">
@@ -28,9 +29,10 @@ Pagina Cliente
             <a href="descrizione.jsp">Descrizione</a>
         </nav>
         <div class="page">
-            <h3>Scegli i prodotti:</h3>
+            
             <c:choose>
             <c:when test="${loggedIn == true && cliente.getId()==id}">
+            <h3>Scegli i prodotti:</h3>
             <table> <!-- Tabella contenente i prodotto acquistabili dai clienti -->
                 <tr class="intestazionetab">
                     <th>Foto</th>

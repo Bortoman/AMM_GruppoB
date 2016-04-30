@@ -29,9 +29,9 @@ Pagina del Venditore
             <a href="descrizione.jsp">Descrizione</a>
         </nav>
         <div class="page">
-            <h3>Metti in vendita un nuovo prodotto:</h3>
             <c:choose>
             <c:when test="${loggedIn == true && venditore.getId()==id}">
+                <h3>Metti in vendita un nuovo prodotto:</h3>
                 <div class="form_logo"></div>
                     <form method="post" action="venditore.html">
                             <div class="form-label">
@@ -68,12 +68,13 @@ Pagina del Venditore
                             <input type="submit" name="Submit" value="Conferma">
                         </div>
                     </form>
-                </div>
+                
             </c:when>
         <c:otherwise>
             <jsp:include page="access_denied.jsp"/>
         </c:otherwise>
     </c:choose>
+        </div>
         <jsp:include page="footer.jsp"/>
     </body>
 </html>

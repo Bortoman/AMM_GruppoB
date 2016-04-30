@@ -23,6 +23,46 @@ header{
     height: 360px;
     box-shadow: 2px 2px 5px rgba(175,175,175,0.7);
 }
+.log_indicator a.droptoggle::before{
+    content: url('images/g_lock.png');
+    padding-right: 5px;
+}
+.log_indicator a#logout::before{
+    content: url('images/g_unlock.png');
+    padding-right: 11px;
+}   
+.log_indicator{
+    
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+.log_indicator p{
+    position: relative;
+    top: -10px;
+}
+.log_indicator .droptoggle{
+    color: white;
+}
+.log_indicator:hover a.droptoggle{
+    display: none;
+}
+.log_indicator a#logout{
+    display: none;
+    
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.log_indicator:hover a#logout{
+    display: block;
+    color:white;
+    text-decoration: none;
+    text-shadow: none;
+}
+a#logout:visited{
+    color: black;
+}
 header h1{
     position:absolute;
     color: white;
@@ -385,11 +425,13 @@ input[type=button]:active, input[type=submit]:active{
     width: 50%;
     top: 200px;
     left: 15%;
-    margin-bottom: 650px;
     padding: 20px;
     border: dotted red 5px;
     background: whitesmoke;
     box-shadow: 2px 2px 5px gray;
+}
+.access_denied a{
+    color: black;
 }
 footer{
     position: relative;
@@ -413,6 +455,9 @@ footer a{
         font-size: 32pt;
         margin-top: 5px;
         left: 20px;  
+    }
+    .log_indicator{
+        font-size: 10pt;
     }
     .subtitle{
         position: absolute;
@@ -560,19 +605,37 @@ footer a{
 @media only screen and (max-width: 480px)
 {
     header{
-    background: black;
-    height: 60px;
+        background: black;
+        height: 60px;
     }
+    /*.toplink{
+        position:fixed;
+        bottom: 50px;
+        right: 10px;
+        z-index: 6;
+        width: 20px;
+        height: 20px;
+        background: rgba(175,175,175,0.7);
+    }
+    .toplink a{
+        color: rgba(1,1,1,0);
+    }*/
     header h1{
-    color: white;
-    font-size: 32pt;
-    font-family: amplify;
-    margin-top: 5px;
-    left: 20px;  
+        color: white;
+        font-size: 32pt;
+        font-family: amplify;
+        margin-top: 5px;
+        left: 20px;  
     }
     /*Nascondo descrizione e pageid*/
     header h2{
         display: none;
+    }
+    
+    .log_indicator{
+        font-size: 10pt;
+        top:75px;
+        z-index: 1;
     }
     /*Ridimensionamento della Navbar come su visualizzazione Tablet*/
     .navbar a{
@@ -580,6 +643,7 @@ footer a{
         padding-right: 10px;
     }
     .navbar{
+        
         font-size: 10pt;
         left:0%;
         width: 100%;
