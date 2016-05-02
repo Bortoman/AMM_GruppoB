@@ -36,7 +36,7 @@
                              <li>${oggetto.getPrice()}</li>
                                  <li> ${oggetto.getQuantity()}</li>
             </ul>
-                                 <button name="Submit" type="submit" value="conferma"><a href="cliente.html?idogg=${oggetto.getId()}">CONFERMA ACQUISTO</a></button>
+                                 <button name="Submit" type="submit" value="conferma"><a href="cliente.html?idoggVenduto=${oggetto.getId()}">CONFERMA ACQUISTO</a></button>
                                  <p>${pagato}</p>
         </div>
         </div>

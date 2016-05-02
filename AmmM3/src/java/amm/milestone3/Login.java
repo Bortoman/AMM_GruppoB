@@ -55,8 +55,6 @@ public class Login extends HttpServlet {
                     if (u instanceof Cliente){
                         session.setAttribute("cliente", u);
                         session.setAttribute("objectSale", UtentiFactory.getInstance().getOggettiList());
-                       /*request.setAttribute("cliente", u);
-                        request.setAttribute("objectSale", UtentiFactory.getInstance().getOggettiList());*/
                         request.getRequestDispatcher("/cliente.jsp").forward(request, response);
                     }
                     else{

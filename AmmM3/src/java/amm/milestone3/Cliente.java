@@ -43,28 +43,27 @@ public class Cliente extends HttpServlet {
             request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(idOggetto));
             request.getRequestDispatcher("carrello.jsp").forward(request, response);
             }
-            
-            if(request.getParameter("idogg")!=null){
+            if(request.getParameter("idoggVenduto")!=null){
                 Integer idCliente = (Integer)session.getAttribute("id");
                 Utente cliente = UtentiFactory.getInstance().getCliente(idCliente);
-                OggettiInVendita oggetto = UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idogg")));
+                OggettiInVendita oggetto = UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idoggVenduto")));
                 if( cliente.getSaldo() > oggetto.getPrice()){
                     cliente.setSaldo(cliente.getSaldo() - oggetto.getPrice());
                     if( oggetto.getQuantity() == 0){
                         request.setAttribute("pagato", "Pagamento non completato, disponibilità esaurita!");
-                        request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idogg"))));
+                        request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idoggVenduto"))));
                         request.getRequestDispatcher("carrello.jsp").forward(request, response);
                     }
                     else{
                         oggetto.setQuantity(oggetto.getQuantity()-1);
                     }
                     request.setAttribute("pagato", "Pagamento avvenuto con successo");
-                    request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idogg"))));
+                    request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idoggVenduto"))));
                     request.getRequestDispatcher("carrello.jsp").forward(request, response);
                 }
                 else{
                     request.setAttribute("pagato", "Pagamento non completato, fondi insufficienti :(");
-                    request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idogg"))));
+                    request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idoggVenduto"))));
                     request.getRequestDispatcher("carrello.jsp").forward(request, response);
                 }
             }
