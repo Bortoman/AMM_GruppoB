@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+Pagina di Log In
+-->
+<html>
+    <head>
+        <title>Log in</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Alessandro Mainas">
+        <meta name="description" content="Pagina dedicata al Log in">
+        <link href="style.css" rel="stylesheet" type="text/css" media="screen">
+        <link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <header>
+            <h1>GuitarShop</h1>
+            <h2 class="subtitle">Guitars, amplifiers & accessories</h2>
+            <h2 class="pageid">Log in</h2>
+        </header>
+         <nav class="navbar">
+            <a href='descrizione.html'>Descrizione</a>
+            <a href='cliente.html'>Cliente</a>
+            <a href='venditore.html'>Venditore</a>
+        </nav>
+        <div class="page">
+            <h3>Effettua l'accesso: </h3>
+            <div class="form_logo"></div>
+                <form method="post" action="Login">
+                    <div class="input_fields">
+                        <div class="form-label">
+                            <label for="usrname">UserName</label>
+                        </div>
+                        <div class="form-input">
+                            <input type='text' name="usrname" id="usrname" value='username'>
+                        </div>
+                        <div class="form-label">
+                            <label for="pswd">Password</label>
+                        </div>
+                        <div class="form-input">
+                            <input type='password' name="pswd" id="pswd" value='password'>
+                        </div>
+                    </div>
+                    <div class="rememberme">
+                        <input type="checkbox" name="rememberusername" id="rememberusername" value="1"  />
+                        <label for="rememberusername">Ricordami</label>
+                    </div>
+                    <div>
+                        <input type='button' value='LOG IN'>
+                    </div>
+                </form>
+        </div>
+        
+        <footer>
+            <p>
+                <a href="http://jigsaw.w3.org/css-validator/check/referer">
+                    <img style="border:0;width:88px;height:31px"
+                        src="http://jigsaw.w3.org/css-validator/images/vcss"
+                        alt="CSS Valido!" />
+                </a>
+            </p>
+        </footer>
+    </body>
+</html>
