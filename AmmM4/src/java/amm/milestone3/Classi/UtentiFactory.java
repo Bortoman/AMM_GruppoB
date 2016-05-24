@@ -127,7 +127,7 @@ public class UtentiFactory {
     // Venditore
     // Dato un id restituisce il relativo venditore (se esiste un venditore con quell'id, altrimenti
     // restituisce null).
-    public Utente getVenditore(int id)
+    public Venditore getVenditore(int id)
     {
         try 
         {
@@ -257,9 +257,9 @@ public class UtentiFactory {
         return listaClienti;
     }
     
-    // Dato un id restituisce il relativo cliente (se esiste uno cliente con quell'id, altrimenti
+    // Dato un id restituisce il relativo cliente (se esiste un cliente con quell'id, altrimenti
     // restituisce null).
-    public Utente getCliente(int id)
+    public Cliente getCliente(int id)
     {
         try 
         {
@@ -307,7 +307,7 @@ public class UtentiFactory {
             // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "mariorossi", "0");
 
-            String query = "DELETE FROM oggetto "
+            String query = "DELETE FROM oggetto_in_vendita "
                          + "WHERE id = " + id;
             Statement st = conn.createStatement();
            

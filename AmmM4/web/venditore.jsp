@@ -13,7 +13,7 @@ Pagina del Venditore
 <html>
     <head>
         <title>Venditore</title>
-        
+        <link rel="icon" href="images/electro.png">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Alessandro Mainas">
@@ -68,7 +68,9 @@ Pagina del Venditore
                             <input type="submit" name="Submit" value="Conferma">
                         </div>
                     </form>
+                <div class='areaPersonale'>
                 <button name="Controller" type="submit" value="controller"><a href="controller.jsp">AREA PERSONALE</a></button>
+                </div>
             </c:when>
         <c:otherwise>
             <jsp:include page="access_denied.jsp"/>

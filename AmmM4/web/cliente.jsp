@@ -81,7 +81,7 @@ Pagina Cliente
                        <td>${oggetto.getName()}</td>
                                 <td> $ ${oggetto.getPrice()} </td>
                                     <td class="qty"> ${oggetto.getQuantity()}</td>
-                                    <td class="link"><a href="Cliente?id=${oggetto.getId()}"></a></td>
+                                    <td class="link"><a href="cliente.html?idOggetto=${oggetto.getId()}"></a></td>
                 </tr>
                 </c:forEach>
             </table>

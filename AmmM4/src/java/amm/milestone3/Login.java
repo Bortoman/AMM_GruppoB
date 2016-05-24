@@ -65,6 +65,7 @@ public class Login extends HttpServlet {
                     session.setAttribute("id", u.getId());
                     session.setAttribute("firstname", u.getFirstName());
                     session.setAttribute("lastname", u.getLastName());
+                    session.setAttribute("saldo", u.getSaldo());
                     
                     if (u instanceof Cliente){
                         session.setAttribute("cliente", u);
@@ -73,6 +74,7 @@ public class Login extends HttpServlet {
                     }
                     else{
                         session.setAttribute("venditore", u);
+                        session.setAttribute("listaOggettiVenditore", UtentiFactory.getInstance().getVenditore((Integer)session.getAttribute("id")).getOggettiVenditore());
                         request.getRequestDispatcher("/venditore.jsp").forward(request, response);
                     }
                 }

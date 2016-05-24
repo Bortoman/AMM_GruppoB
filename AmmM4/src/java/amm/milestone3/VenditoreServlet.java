@@ -40,7 +40,7 @@ public class VenditoreServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(false);
         
-        Integer idOggetto=0;
+        
         if(request.getParameter("Submit")!=null){
             
             String name = request.getParameter("name");
@@ -60,16 +60,17 @@ public class VenditoreServlet extends HttpServlet {
             oggetto_n.setPrice(price);
             oggetto_n.setQuantity(quantity);
             request.setAttribute("oggetto", oggetto_n);
+            session.setAttribute("listaOggettiVenditore", UtentiFactory.getInstance().getVenditore((Integer)session.getAttribute("id")).getOggettiVenditore());//aggiornamento lista
             request.getRequestDispatcher("inserimento_confermato.jsp").forward(request, response);
-            
-           
         }
         if(request.getParameter("idOggettodaEliminare")!=null){
-            UtentiFactory.getInstance().eliminaOggetto(Integer.parseInt(request.getParameter("idOggetto")));
+            UtentiFactory.getInstance().eliminaOggetto(Integer.parseInt(request.getParameter("idOggettodaEliminare")));
+            session.setAttribute("listaOggettiVenditore", UtentiFactory.getInstance().getVenditore((Integer)session.getAttribute("id")).getOggettiVenditore());//aggiornamento lista
+            request.getRequestDispatcher("controller.jsp").forward(request, response);
         }
         if(request.getParameter("idOggettodaModificare")!=null){
-                idOggetto = Integer.parseInt(request.getParameter("idOggettodaModificare"));
-                
+                Integer idOggetto = Integer.parseInt(request.getParameter("idOggettodaModificare"));
+                request.setAttribute("idOggetto", idOggetto);//mi serve mantenere i dati per le prossime modifiche
                 request.getRequestDispatcher("modificaoggetto.jsp").forward(request, response);
         }
         if(request.getParameter("Modifica")!=null){
@@ -78,8 +79,9 @@ public class VenditoreServlet extends HttpServlet {
             String description = request.getParameter("description");
             Double price = Double.parseDouble(request.getParameter("price"));
             Integer quantity = Integer.parseInt(request.getParameter("quantity"));
+            Integer idOggetto = Integer.parseInt(request.getParameter("idOggetto"));
             UtentiFactory.getInstance().modificaOggetto(idOggetto, name, imgURL, description, price, quantity);
-            
+            session.setAttribute("listaOggettiVenditore", UtentiFactory.getInstance().getVenditore((Integer)session.getAttribute("id")).getOggettiVenditore());//aggiornamento lista
             request.getRequestDispatcher("controller.jsp").forward(request, response);
         }
         

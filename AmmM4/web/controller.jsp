@@ -39,7 +39,7 @@
                                     <th>Elimina</th>
                                         <th>Modifica</th>
                 </tr>
-                <c:forEach var="oggetto" items="${venditore.getOggettiVenditore()}">
+                <c:forEach var="oggetto" items="${listaOggettiVenditore}">
                     <c:choose>
                         <c:when test="${oggetto.getId()%2 != 0}">
                             <tr class="dispari">
@@ -52,8 +52,8 @@
                         <td>${oggetto.getName()}</td>
                             <td> $ ${oggetto.getPrice()} </td>
                                 <td class="qty"> ${oggetto.getQuantity()}</td>
-                                <td><button type='submit'  name="Elimina"><a href="venditore.html?idOggettodaEliminare=${oggetto.getId()}">Elimina</a></button></td>
-                                <td><button type='submit' name="Modifica"><a href="venditore.html?idOggettodaModificare=${oggetto.getId()}">Modifica</a></button></td>
+                                <td><a href="venditore.html?idOggettodaEliminare=${oggetto.getId()}">Elimina</a></td>
+                                <td><a href="venditore.html?idOggettodaModificare=${oggetto.getId()}">Modifica</a></td>
                 </tr>
                 </c:forEach>
         </table>

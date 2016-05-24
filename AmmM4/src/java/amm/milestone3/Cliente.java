@@ -63,6 +63,8 @@ public class Cliente extends HttpServlet {
                         break;
                     case 1:
                         request.setAttribute("pagato", "Pagamento avvenuto con successo");
+                        session.setAttribute("saldo", UtentiFactory.getInstance().getCliente(idCliente).getSaldo());//aggiorno la visualizzazione del saldo
+                        session.setAttribute("objectSale", UtentiFactory.getInstance().getOggettiInVendita());//aggiorno la visualizzazione della lista con le nuove quantità
                         request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idoggVenduto"))));
                         request.getRequestDispatcher("carrello.jsp").forward(request, response);
                         break;

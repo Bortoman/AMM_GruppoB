@@ -12,8 +12,8 @@ Pagina del Venditore
 -->
 <html>
     <head>
-        <title>Venditore</title>
-        
+        <title>Modifica Oggetto</title>
+        <link rel="icon" href="images/electro.png">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Alessandro Mainas">
@@ -63,11 +63,12 @@ Pagina del Venditore
                             <div class="form-input">
                                 <input type="number" name="quantity" id="quantity">
                             </div>
+                                <input type="hidden" name='idOggetto' id='idOggetto' value='${idOggetto}'/>
                         <div>
                             <input type="submit" name="Modifica" value="Modifica">
                         </div>
                     </form>
-                <button name="Controller" type="submit" value="controller"><a href="controller.jsp">AREA PERSONALE</a></button>
+                
         </div>
         <jsp:include page="footer.jsp"/>
     </body>
