@@ -5,6 +5,12 @@
  */
 package amm.milestone3.Classi;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -12,188 +18,430 @@ import java.util.ArrayList;
  * @author Alessandro Mainas
  */
 public class UtentiFactory {
-    private static UtentiFactory singleton;
-    public static UtentiFactory getInstance(){
-        if (singleton == null){
-            singleton = new UtentiFactory();
-        }
-        return singleton;
-    }
-    
+    /*
     // Lista Oggetti in vendita
     private ArrayList<OggettiInVendita> listaOggetti = new ArrayList<>();
     //Lista Venditori
     private ArrayList<Utente> listaVenditori = new ArrayList<>();
     //Lista Clienti
     private ArrayList<Utente> listaClienti = new ArrayList<>();
-    
+    */
     //Costruttore
-    public UtentiFactory(){
-        
-        //Oggetti
-        OggettiInVendita oggetto_1 = new OggettiInVendita();
-        oggetto_1.setId(0);
-        oggetto_1.setName("Gibson EDS-DoubleneckCustom");
-        oggetto_1.setDescription("Gibson EDS-Doubleneck Custom, l'originale due-in-uno della Gibson ricreata da Gibson Custom curata in ogni suo dettaglio, in versione Heritage Cherry.");
-        oggetto_1.setImageURL("images/EDSDoubleneck.jpg");
-        oggetto_1.setPrice(6499);
-        oggetto_1.setQuantity(1);
-        listaOggetti.add(oggetto_1);
-        
-        OggettiInVendita oggetto_2 = new OggettiInVendita();
-        oggetto_2.setId(1);
-        oggetto_2.setName("Gibson Flying V Custom");
-        oggetto_2.setDescription("Gibson Flying V Custom, rivisitazione futuristica della versione anni 50, in versione Black Beauty Custom.");
-        oggetto_2.setImageURL("images/GibsonFlyingV.jpg");
-        oggetto_2.setPrice(5399);
-        oggetto_2.setQuantity(1);
-        listaOggetti.add(oggetto_2);
-     
-        OggettiInVendita oggetto_3 = new OggettiInVendita();
-        oggetto_3.setId(2);
-        oggetto_3.setName("Gibson Les Paul");
-        oggetto_3.setDescription("La Les Paul Standard 1959 50° Anniversario rifinita con Heritage Cherry Sunburst");
-        oggetto_3.setImageURL("images/GibsonLesPaul.jpg");
-        oggetto_3.setPrice(8504);
-        oggetto_3.setQuantity(3);
-        listaOggetti.add(oggetto_3);
-        
-        OggettiInVendita oggetto_4 = new OggettiInVendita();
-        oggetto_4.setId(3);
-        oggetto_4.setName("Gibson Hummingbir Koa Elite");
-        oggetto_4.setDescription("Uno dei più iconici modelli, fatta a mano con spettacolare koa AAA, fronte dietro e lati.");
-        oggetto_4.setImageURL("images/GibsonHKE.jpg");
-        oggetto_4.setPrice(4499);
-        oggetto_4.setQuantity(3);
-        listaOggetti.add(oggetto_4);
-        
-        OggettiInVendita oggetto_5 = new OggettiInVendita();
-        oggetto_5.setId(4);
-        oggetto_5.setName("Fender Stratocaster");
-        oggetto_5.setDescription("American Custom Stratocaster 2016 Chocolate Sunburst");
-        oggetto_5.setImageURL("images/Fender_strato.jpg");
-        oggetto_5.setPrice(4499);
-        oggetto_5.setQuantity(2);
-        listaOggetti.add(oggetto_5);
-        
-        OggettiInVendita oggetto_6 = new OggettiInVendita();
-        oggetto_6.setId(5);
-        oggetto_6.setName("Marshall JVM205H");
-        oggetto_6.setDescription("Il British-built, completamente valvolare 50 Watt JVM205H, 2 canali.");
-        oggetto_6.setImageURL("images/MARSHJVM205H.jpg");
-        oggetto_6.setPrice(1499);
-        oggetto_6.setQuantity(5);
-        listaOggetti.add(oggetto_6);
-        
-        OggettiInVendita oggetto_7 = new OggettiInVendita();
-        oggetto_7.setId(6);
-        oggetto_7.setName("Marshall 1960A");
-        oggetto_7.setDescription("Il British-built, svasato, 4x12\" speakers per un totale di 300W, 2 canali.");
-        oggetto_7.setImageURL("images/M1960A.jpg");
-        oggetto_7.setPrice(899);
-        oggetto_7.setQuantity(5);
-        listaOggetti.add(oggetto_7);
-        
-        OggettiInVendita oggetto_8 = new OggettiInVendita();
-        oggetto_8.setId(7);
-        oggetto_8.setName("Marshall 1960B");
-        oggetto_8.setDescription("Il British-built, 4x12\" speakers per un totale di 300W, 2 canali.");
-        oggetto_8.setImageURL("images/M1960A.jpg");
-        oggetto_8.setPrice(899);
-        oggetto_8.setQuantity(8);
-        listaOggetti.add(oggetto_8);
-        
-        OggettiInVendita oggetto_9 = new OggettiInVendita();
-        oggetto_9.setId(8);
-        oggetto_9.setName("Marshall JH-1 JACKHAMMER");
-        oggetto_9.setDescription("Pedale Marshall, distorsione energica, ma sound naturale e realistico.");
-        oggetto_9.setImageURL("images/M1960A.jpg");
-        oggetto_9.setPrice(79);
-        oggetto_9.setQuantity(10);
-        listaOggetti.add(oggetto_9);
-        
-        //Clienti
-        Cliente cliente_1 = new Cliente();
-        cliente_1.setId(1);
-        cliente_1.setFirstName("Mario");
-        cliente_1.setLastName("Rossi");
-        cliente_1.setSaldo(90000.0);
-        cliente_1.setPassword("0");
-        cliente_1.setUsername("mariorossi");
-        listaClienti.add(cliente_1);
-        
-        Cliente cliente_2 = new Cliente();
-        cliente_2.setId(0);
-        cliente_2.setFirstName("Bianca");
-        cliente_2.setLastName("Veronesi");
-        cliente_2.setSaldo(9000);
-        cliente_2.setPassword("b_Veronesi93");
-        cliente_2.setUsername("biancavero");
-        listaClienti.add(cliente_2);
-        
-        //Venditori
-        Venditore venditore_1 = new Venditore();
-        venditore_1.setId(2);
-        venditore_1.setFirstName("Fernando");
-        venditore_1.setLastName("Luiz");
-        venditore_1.setPassword("l_Fernando2");
-        venditore_1.setUsername("fluiz");
-        listaVenditori.add(venditore_1);
-        
-        Venditore venditore_2 = new Venditore();
-        venditore_2.setId(4);
-        venditore_2.setFirstName("Chiara");
-        venditore_2.setLastName("Matterport");
-        venditore_2.setPassword("m_chiara3");
-        venditore_2.setUsername("chiaramatter");
-        listaVenditori.add(venditore_2);
+    // Attributi
+    // Singleton
+    private static UtentiFactory singleton;
+    String connectionString; 
+    
+    // E' l'unico metodo che restituisce il singleton. Provvede a inizializzarlo alla prima chiamata.
+    // Nelle successive chiamate lo restituisce e basta.
+    public static UtentiFactory getInstance() {
+        if (singleton == null) {
+            singleton = new UtentiFactory();
+        }
+        return singleton;
     }
-    /* Metodi */
+    
+    /* Costruttore */
+    private UtentiFactory() {
 
-    /**
-     *
-     * @return lista Venditori
-     */
-    public ArrayList<Utente> getVenditoreList(){
+    }
+    
+    /* Metodi */        
+    public Utente getUtente(String username, String password)
+    {
+        try{
+            Connection conn= DriverManager.getConnection(connectionString, "mariorossi", "0");
+            //sql Command
+            String query = "select * from venditore where username = ? and password = ?";
+            //
+            PreparedStatement stmt= conn.prepareStatement(query);
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            //Esegui query
+            ResultSet res = stmt.executeQuery();
+            
+            if(res.next())
+            {
+                Venditore venditore = new Venditore();
+                venditore.setId(res.getInt("id"));
+                venditore.setFirstName(res.getString("nome"));
+                venditore.setLastName(res.getString("cognome"));
+                venditore.setUsername(res.getString("username"));
+                venditore.setPassword(res.getString("password"));
+                venditore.setSaldo(res.getDouble("saldo"));
+                // Oggetti in vendita da questo venditore
+                query = "select * from oggetto_in_vendita"
+                        + " where idVenditore = "+ venditore.getId();
+                Statement st= conn.createStatement();
+                ResultSet res2= st.executeQuery(query);
+                
+                while(res2.next())
+                {
+                    OggettiInVendita o = new OggettiInVendita();
+                    o.setId(res2.getInt("id"));
+                    o.setName(res2.getString("nome"));
+                    o.setImageURL(res2.getString("imageURL"));
+                    o.setDescription(res2.getString("descrizione"));
+                    o.setPrice(res2.getDouble("prezzo"));
+                    o.setQuantity(res2.getInt("quantita"));
+                    venditore.getOggettiVenditore().add(o);
+                }
+                
+                st.close();
+                stmt.close();
+                conn.close();
+                return venditore;
+            }
+            
+            //sql command
+            query = "select * from cliente where username = ? and password = ?";
+            stmt = conn.prepareStatement(query);
+            //dati
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            res = stmt.executeQuery();
+            
+            if (res.next())
+            {
+                Cliente cliente = new Cliente();
+                cliente.setId(res.getInt("id"));
+                cliente.setFirstName(res.getString("nome"));
+                cliente.setLastName(res.getString("cognome"));
+                cliente.setUsername(res.getString("username"));
+                cliente.setPassword(res.getString("password"));
+                cliente.setSaldo(res.getDouble("saldo"));
+                
+                stmt.close();
+                conn.close();
+                return cliente;
+            }
+            stmt.close();
+            conn.close();
+        }
+        catch(SQLException e)
+        {
+        
+        }
+        return null;
+    }
+    // Venditore
+    // Dato un id restituisce il relativo venditore (se esiste un venditore con quell'id, altrimenti
+    // restituisce null).
+    public Utente getVenditore(int id)
+    {
+        try 
+        {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "mariorossi", "0");
+            // Query
+            String query = "select * from venditore "
+            + "where id = ?";
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            // Si associano i valori
+            stmt.setInt(1, id);
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            
+             // ciclo sulle righe restituite
+            if(res.next()) 
+            {
+                Venditore current = new Venditore();
+                current.setId(res.getInt("id"));
+                current.setFirstName(res.getString("nome"));
+                current.setLastName(res.getString("cognome"));
+                current.setUsername(res.getString("username"));
+                current.setPassword(res.getString("password"));
+                current.setSaldo(res.getDouble("saldo"));
+                // Oggetti in vendita da questo venditore
+                query = "select * from oggetto_in_vendita"
+                        + " where oggetto_in_vendita.idVenditore = "+ current.getId();
+                Statement st= conn.createStatement();
+                ResultSet res2= st.executeQuery(query);
+                
+                while(res2.next())
+                {
+                    OggettiInVendita o = new OggettiInVendita();
+                    o.setId(res2.getInt("id"));
+                    o.setName(res2.getString("nome"));
+                    o.setImageURL(res2.getString("imageURL"));
+                    o.setDescription(res2.getString("descrizione"));
+                    o.setPrice(res2.getDouble("prezzo"));
+                    o.setQuantity(res2.getInt("quantita"));
+                    current.getOggettiVenditore().add(o);
+                }                 
+                st.close();
+                stmt.close();
+                conn.close();
+                return current;
+            }   
+            stmt.close();
+            conn.close();
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    // Restituisce la lista di tutti i venditori
+    public ArrayList<Venditore> getVenditori()
+    {
+        ArrayList<Venditore> listaVenditori = new ArrayList<Venditore>();
+        try 
+        {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "mariorossi", "0");
+            Statement stmt = conn.createStatement();
+            String query = "select * from "
+            + "venditore'";
+            ResultSet set = stmt.executeQuery(query);
+            
+             // ciclo sulle righe restituite
+            while(set.next()) 
+            {
+                Venditore current = new Venditore();
+                current.setId(set.getInt("id"));
+                current.setFirstName(set.getString("nome"));
+                current.setLastName(set.getString("cognome"));
+                current.setUsername(set.getString("username"));
+                current.setPassword(set.getString("password"));
+                current.setSaldo(set.getDouble("saldo"));
+                listaVenditori.add(current);
+            } 
+            
+            stmt.close();
+            conn.close();
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
         return listaVenditori;
     }
-    public Utente getVenditore(int id){
-        for(Utente u : listaVenditori){
-            if(u.getId() == id)
-                return u;
+    
+    // Clienti
+    // Restituisce la lista di tutti gli clienti
+    public ArrayList<Cliente> getClienti()
+    {
+        ArrayList<Cliente> listaClienti = new ArrayList<Cliente>();
+        try 
+        {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "mariorossi", "0");
+            Statement stmt = conn.createStatement();
+            String query = "select * from cliente";
+            ResultSet set = stmt.executeQuery(query);
+            
+             // ciclo sulle righe restituite
+            while(set.next()) 
+            {
+                Cliente current = new Cliente();
+                current.setId(set.getInt("id"));
+                current.setFirstName(set.getString("nome"));
+                current.setLastName(set.getString("cognome"));
+                current.setUsername(set.getString("username"));
+                current.setPassword(set.getString("password"));
+                current.setSaldo(set.getDouble("saldo"));
+                listaClienti.add(current);
+            }     
+            
+            stmt.close();
+            conn.close();
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
         }
-        return null;
-    }
-    public ArrayList<Utente> getClienteList(){
         return listaClienti;
     }
-    public Utente getCliente(int id){
-        for(Utente u : listaClienti){
-            if(u.getId() == id)
-                return u;
+    
+    // Dato un id restituisce il relativo cliente (se esiste uno cliente con quell'id, altrimenti
+    // restituisce null).
+    public Utente getCliente(int id)
+    {
+        try 
+        {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "mariorossi", "0");
+            String query = "select * from cliente "
+            + "where id = ?";
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            // Si associano i valori
+            stmt.setInt(1, id);
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+           
+             // ciclo sulle righe restituite
+            if(res.next()) 
+            {
+                Cliente current = new Cliente();
+                current.setId(res.getInt("id"));
+                current.setFirstName(res.getString("nome"));
+                current.setLastName(res.getString("cognome"));
+                current.setUsername(res.getString("username"));
+                current.setPassword(res.getString("password"));
+                current.setSaldo(res.getDouble("saldo"));
+                
+                stmt.close();
+                conn.close();
+                return current;
+            }
+            
+            stmt.close();
+            conn.close();
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
         }
         return null;
     }
-    public ArrayList<OggettiInVendita> getOggettiList(){
-        return listaOggetti;
-    }
-    public OggettiInVendita getOggetto(int id){
-        for(OggettiInVendita o : listaOggetti){
-            if(o.getId() == id)
-                return o;
+    // OggettiInVendita
+    public void inserisciOggetto(String name, String imageURL, String description, Double price, Integer quantity, Integer idVenditore){
+        try
+        {
+            Connection conn = DriverManager.getConnection(connectionString, "mariorossi", "0");
+            Statement stmt = conn.createStatement();
+            String query = "insert into oggetto_in_vendita(id, nome, imageURL, descrizione, prezzo, quantita, id Venditore)"
+                            + " values(default, ?, ?, ?, ?, ?, ?)";
+            stmt.executeQuery(query);
+            stmt.close();
+            
+        }catch(SQLException e)
+        {
+            e.printStackTrace();
         }
-        return null;
-    }
-    public void aggiungiOggetto(OggettiInVendita o){
-        listaOggetti.add(o);
-    }
-    public ArrayList<Utente> getUserList(){
-        ArrayList<Utente> listaUtenti = new ArrayList<>();
-        
-        listaUtenti.addAll(listaVenditori);
-        listaUtenti.addAll(listaClienti);
-        
-        return listaUtenti;
     }
     
+    public ArrayList<OggettiInVendita> getOggettiInVendita()
+    {
+        ArrayList<OggettiInVendita> lista = new ArrayList<OggettiInVendita>();
+        try 
+        {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "mariorossi", "0");
+            Statement stmt = conn.createStatement();
+            String query = "select * from "
+            + "oggetto_in_vendita";
+            ResultSet set = stmt.executeQuery(query);
+            
+             // ciclo sulle righe restituite
+            while(set.next()) 
+            {
+                OggettiInVendita o = new OggettiInVendita();
+                    o.setId(set.getInt("id"));
+                    o.setName(set.getString("nome"));
+                    o.setImageURL(set.getString("imageURL"));
+                    o.setDescription(set.getString("descrizione"));
+                    o.setPrice(set.getDouble("prezzo"));
+                    o.setQuantity(set.getInt("quantita"));
+                lista.add(o);
+            }
+            
+            stmt.close();
+            conn.close();
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        return lista;
+    }
+    public OggettiInVendita getOggetto(int id)
+    {
+        try 
+        {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "mariorossi", "0");
+            String query = "select * from oggetto_in_vendita "
+            + "where id = ?";
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            // Si associano i valori
+            stmt.setInt(1, id);
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            
+             // ciclo sulle righe restituite
+            if(res.next()) 
+            {
+                OggettiInVendita o = new OggettiInVendita();
+                    o.setId(res.getInt("id"));
+                    o.setName(res.getString("nome"));
+                    o.setImageURL(res.getString("imageURL"));
+                    o.setDescription(res.getString("descrizione"));
+                    o.setPrice(res.getDouble("prezzo"));
+                    o.setQuantity(res.getInt("quantita"));
+                
+   
+                stmt.close();
+                conn.close();
+                return o;
+            } 
+            
+            stmt.close();
+            conn.close();
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+        public void Registrazione_Esame(int idCliente, int idOggettiInVendita,  int voto, String descrizione) throws SQLException
+        {
+            Connection conn = DriverManager.getConnection(connectionString, "alessandrocarcangiu", "0000");
+            PreparedStatement updatePianodistudi = null;
+            PreparedStatement updateEsamisuperati= null;
+            //sql command
+            String deletePianodistudi = "delete from pianodistudi where idOggettiInVendita = ? and idUtente = ?";
+            String insertEsamisuperati = "insert into esami_superati(idOggettiInVendita, id Cliente, voto, descrizione) values (?,?,?,?)";
+            try{
+                conn.setAutoCommit(false);
+                updatePianodistudi = conn.prepareStatement(deletePianodistudi);
+                updateEsamisuperati = conn.prepareStatement(insertEsamisuperati);
+                
+                updatePianodistudi.setInt(1, idOggettiInVendita);
+                updatePianodistudi.setInt(2, idCliente);
+                
+                updateEsamisuperati.setInt(1, idOggettiInVendita);
+                updateEsamisuperati.setInt(2, idCliente);
+                updateEsamisuperati.setInt(3, voto);
+                updateEsamisuperati.setString(4, descrizione);
+                
+                int r1 = updatePianodistudi.executeUpdate();
+                int r2 = updateEsamisuperati.executeUpdate();
+                
+                if(r1 != 1 || r2 != 1)
+                {
+                    conn.rollback();
+                }
+                conn.commit();
+            }
+            catch(SQLException e)
+            {
+                conn.rollback();
+                throw e;
+            }
+            finally
+            {
+                if(updatePianodistudi != null)
+                    updatePianodistudi.close();
+                if(updateEsamisuperati != null)
+                    updateEsamisuperati.close();
+                conn.setAutoCommit(true);
+                conn.close();
+            }
+        }
+    
+    // ConnectionString
+    public void setConnectionString(String s){
+	this.connectionString = s;
+    }
+    public String getConnectionString(){
+	return this.connectionString;
+    }
 }

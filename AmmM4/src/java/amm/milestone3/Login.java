@@ -11,6 +11,8 @@ import amm.milestone3.Classi.UtentiFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +24,22 @@ import javax.servlet.http.HttpSession;
  *
  * @author Alessandro Mainas
  */
-@WebServlet(name = "Login", urlPatterns = {"/login.html"})
+@WebServlet(name = "Login", urlPatterns = {"/login.html"}, loadOnStartup = 0)
 public class Login extends HttpServlet {
+    private static final String JDBC_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
+    private static final String DB_CLEAN_PATH = "../../web/WEB-INF/db/ammdb";
+    private static final String DB_BUILD_PATH = "WEB-INF/db/ammdb";
+    
+    @Override 
+    public void init(){
+        String dbConnection = "jdbc:derby:" + this.getServletContext().getRealPath("/") + DB_BUILD_PATH;
+        try {
+            Class.forName(JDBC_DRIVER);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        UtentiFactory.getInstance().setConnectionString(dbConnection);
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +59,8 @@ public class Login extends HttpServlet {
             String username = request.getParameter("usrname");
             String password = request.getParameter("pswd");
             
-            ArrayList<Utente> listaUtenti = UtentiFactory.getInstance().getUserList();
-            
-            for(Utente u : listaUtenti){
-                if(u.getUsername().equals(username) && u.getPassword().equals(password)){
+            Utente u = UtentiFactory.getInstance().getUtente(username, password);
+                if(u != null){
                     session.setAttribute("loggedIn", true);
                     session.setAttribute("id", u.getId());
                     session.setAttribute("firstname", u.getFirstName());
@@ -54,7 +68,7 @@ public class Login extends HttpServlet {
                     
                     if (u instanceof Cliente){
                         session.setAttribute("cliente", u);
-                        session.setAttribute("objectSale", UtentiFactory.getInstance().getOggettiList());
+                        session.setAttribute("objectSale", UtentiFactory.getInstance().getOggettiInVendita());
                         request.getRequestDispatcher("/cliente.jsp").forward(request, response);
                     }
                     else{
@@ -62,7 +76,6 @@ public class Login extends HttpServlet {
                         request.getRequestDispatcher("/venditore.jsp").forward(request, response);
                     }
                 }
-            }
         }
         request.setAttribute("messaggio", "Credenziali non corrette");
         request.getRequestDispatcher("/login.jsp").forward(request, response);
