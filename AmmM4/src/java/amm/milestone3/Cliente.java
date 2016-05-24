@@ -10,6 +10,9 @@ import amm.milestone3.Classi.Utente;
 import amm.milestone3.Classi.UtentiFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,29 +48,37 @@ public class Cliente extends HttpServlet {
             }
             if(request.getParameter("idoggVenduto")!=null){
                 Integer idCliente = (Integer)session.getAttribute("id");
-                Utente cliente = UtentiFactory.getInstance().getCliente(idCliente);
-                OggettiInVendita oggetto = UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idoggVenduto")));
-                if( cliente.getSaldo() > oggetto.getPrice()){
-                    cliente.setSaldo(cliente.getSaldo() - oggetto.getPrice());
-                    if( oggetto.getQuantity() == 0){
+                Integer idOggettoVenduto = Integer.parseInt(request.getParameter("idoggVenduto"));
+                int result=0;
+                        try {
+                            result=UtentiFactory.getInstance().Compra(idCliente, idOggettoVenduto);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+                        }   
+                switch(result){
+                    case 2:
                         request.setAttribute("pagato", "Pagamento non completato, disponibilità esaurita!");
                         request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idoggVenduto"))));
                         request.getRequestDispatcher("carrello.jsp").forward(request, response);
-                    }
-                    else{
-                        oggetto.setQuantity(oggetto.getQuantity()-1);
-                    }
-                    request.setAttribute("pagato", "Pagamento avvenuto con successo");
-                    request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idoggVenduto"))));
-                    request.getRequestDispatcher("carrello.jsp").forward(request, response);
+                        break;
+                    case 1:
+                        request.setAttribute("pagato", "Pagamento avvenuto con successo");
+                        request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idoggVenduto"))));
+                        request.getRequestDispatcher("carrello.jsp").forward(request, response);
+                        break;
+                    case 3:
+                        request.setAttribute("pagato", "Pagamento non completato, fondi insufficienti :(");
+                        request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idoggVenduto"))));
+                        request.getRequestDispatcher("carrello.jsp").forward(request, response);
+                        break;
+                    default:
+                        request.setAttribute("pagato", "Pagamento non completato, errore di transazione");
+                        request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idoggVenduto"))));
+                        request.getRequestDispatcher("carrello.jsp").forward(request, response);
                 }
-                else{
-                    request.setAttribute("pagato", "Pagamento non completato, fondi insufficienti :(");
-                    request.setAttribute("oggetto", UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idoggVenduto"))));
-                    request.getRequestDispatcher("carrello.jsp").forward(request, response);
                 }
             }
-    }
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

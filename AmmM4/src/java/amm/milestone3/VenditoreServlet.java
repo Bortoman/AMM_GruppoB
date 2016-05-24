@@ -39,6 +39,8 @@ public class VenditoreServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(false);
+        
+        Integer idOggetto=0;
         if(request.getParameter("Submit")!=null){
             
             String name = request.getParameter("name");
@@ -50,14 +52,35 @@ public class VenditoreServlet extends HttpServlet {
             Venditore v = new Venditore();
             v= (Venditore)session.getAttribute("venditore");
             Integer idVenditore = v.getId();
-            UtentiFactory.getInstance().inserisciOggetto(name, imgURL, description, price, quantity, idVenditore);
             OggettiInVendita oggetto_n = new OggettiInVendita();
-            
-            
+            UtentiFactory.getInstance().inserisciOggetto(name, imgURL, description, price, quantity, idVenditore);
+            oggetto_n.setName(name);
+            oggetto_n.setDescription(description);
+            oggetto_n.setImageURL(imgURL);
+            oggetto_n.setPrice(price);
+            oggetto_n.setQuantity(quantity);
             request.setAttribute("oggetto", oggetto_n);
             request.getRequestDispatcher("inserimento_confermato.jsp").forward(request, response);
             
            
+        }
+        if(request.getParameter("idOggettodaEliminare")!=null){
+            UtentiFactory.getInstance().eliminaOggetto(Integer.parseInt(request.getParameter("idOggetto")));
+        }
+        if(request.getParameter("idOggettodaModificare")!=null){
+                idOggetto = Integer.parseInt(request.getParameter("idOggettodaModificare"));
+                
+                request.getRequestDispatcher("modificaoggetto.jsp").forward(request, response);
+        }
+        if(request.getParameter("Modifica")!=null){
+            String name = request.getParameter("name");
+            String imgURL = request.getParameter("imgURL");
+            String description = request.getParameter("description");
+            Double price = Double.parseDouble(request.getParameter("price"));
+            Integer quantity = Integer.parseInt(request.getParameter("quantity"));
+            UtentiFactory.getInstance().modificaOggetto(idOggetto, name, imgURL, description, price, quantity);
+            
+            request.getRequestDispatcher("controller.jsp").forward(request, response);
         }
         
     }

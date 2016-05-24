@@ -300,20 +300,88 @@ public class UtentiFactory {
         return null;
     }
     // OggettiInVendita
+    public void eliminaOggetto(int id){
+        
+        try 
+        {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "mariorossi", "0");
+
+            String query = "DELETE FROM oggetto "
+                         + "WHERE id = " + id;
+            Statement st = conn.createStatement();
+           
+            st.executeUpdate(query);
+
+            
+            st.close();
+            conn.close();
+                  
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+       
+    }
     public void inserisciOggetto(String name, String imageURL, String description, Double price, Integer quantity, Integer idVenditore){
+       
         try
         {
-            Connection conn = DriverManager.getConnection(connectionString, "mariorossi", "0");
-            Statement stmt = conn.createStatement();
-            String query = "insert into oggetto_in_vendita(id, nome, imageURL, descrizione, prezzo, quantita, id Venditore)"
-                            + " values(default, ?, ?, ?, ?, ?, ?)";
-            stmt.executeQuery(query);
+            Connection c = DriverManager.getConnection(connectionString, "mariorossi", "0");
+            
+            String query = "INSERT INTO oggetto_in_vendita (id, nome, imageURL, descrizione, prezzo, quantita, idVenditore)"
+                            + " VALUES (?, ?, ?, ?, ?, ?, ?)";
+           PreparedStatement stmt = c.prepareStatement(query);
+            stmt.setInt(1, getOggettiInVendita().size());
+            stmt.setString(2, name);
+            stmt.setString(3, imageURL);
+            stmt.setString(4, description);
+            stmt.setDouble(5, price);
+            stmt.setInt(6, quantity);
+            stmt.setInt(7, idVenditore);
+            
+            //Esegui query
+           
+            stmt.executeUpdate();
             stmt.close();
+            c.close();
+            
             
         }catch(SQLException e)
         {
             e.printStackTrace();
         }
+        
+    }
+     public void modificaOggetto(Integer id, String name, String imageURL, String description, Double price, Integer quantity) {
+       
+        try 
+        {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "mariorossi", "0");
+            String query = "UPDATE oggetto_in_vendita SET nome = ? , imageURL = ? , descrizione = ?, prezzo = ?, quantita = ? WHERE id = ?";
+
+            PreparedStatement st = conn.prepareStatement(query);
+            st.setString(1, name);
+            st.setString(2, imageURL);
+            st.setString(3, description);
+            st.setDouble(4, price);
+            st.setInt(5, quantity);
+            st.setInt(6, id);
+            
+            st.executeUpdate();
+
+
+            st.close();
+            conn.close();
+                  
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+       
     }
     
     public ArrayList<OggettiInVendita> getOggettiInVendita()
@@ -349,6 +417,30 @@ public class UtentiFactory {
             e.printStackTrace();
         }
         return lista;
+    }
+    public Integer getIdVenditore(Integer idOggettiInVendita){
+        Integer idVenditore=0;
+        try{
+            Connection conn = DriverManager.getConnection(connectionString, "mariorossi", "0");
+            String query = "select * from oggetto_in_vendita "
+            + "where id = ?";
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            // Si associano i valori
+            stmt.setInt(1, idOggettiInVendita);
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            if(res.next()){
+                idVenditore = res.getInt("idVenditore");
+            }
+            stmt.close();
+                conn.close();
+                return idVenditore;
+        }catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
     }
     public OggettiInVendita getOggetto(int id)
     {
@@ -391,35 +483,63 @@ public class UtentiFactory {
         }
         return null;
     }
-        public void Registrazione_Esame(int idCliente, int idOggettiInVendita,  int voto, String descrizione) throws SQLException
+        public Integer Compra(int idCliente, int idOggettiInVendita) throws SQLException
         {
-            Connection conn = DriverManager.getConnection(connectionString, "alessandrocarcangiu", "0000");
-            PreparedStatement updatePianodistudi = null;
-            PreparedStatement updateEsamisuperati= null;
+            Connection conn = DriverManager.getConnection(connectionString, "mariorossi", "0");
+            PreparedStatement aggiornaSaldoVenditore = null;
+            PreparedStatement aggiornaSaldoCliente= null;
+            PreparedStatement aggiornaQuantitaOggetto=null;
             //sql command
-            String deletePianodistudi = "delete from pianodistudi where idOggettiInVendita = ? and idUtente = ?";
-            String insertEsamisuperati = "insert into esami_superati(idOggettiInVendita, id Cliente, voto, descrizione) values (?,?,?,?)";
+            String updateCliente = "UPDATE cliente SET saldo = ? where id = ?";
+            String updateVenditore = "UPDATE venditore SET saldo = ? where id = ?";
+            String updateOggetto = "UPDATE oggetto_in_vendita SET quantita = ? where id = ?";
             try{
                 conn.setAutoCommit(false);
-                updatePianodistudi = conn.prepareStatement(deletePianodistudi);
-                updateEsamisuperati = conn.prepareStatement(insertEsamisuperati);
+                aggiornaSaldoVenditore = conn.prepareStatement(updateVenditore);
+                aggiornaSaldoCliente = conn.prepareStatement(updateCliente);
+                aggiornaQuantitaOggetto = conn.prepareStatement(updateOggetto);
                 
-                updatePianodistudi.setInt(1, idOggettiInVendita);
-                updatePianodistudi.setInt(2, idCliente);
+                Double saldoC = getCliente(idCliente).getSaldo();
+                Double saldoV = getVenditore(getIdVenditore(idOggettiInVendita)).getSaldo();
+                Double prezzo = getOggetto(idOggettiInVendita).getPrice();
+                Integer quantita = getOggetto(idOggettiInVendita).getQuantity();
+                if (saldoC > prezzo && quantita!=0){
+                    saldoC-=prezzo;
+                    saldoV+=prezzo;
+                    quantita--;
+                }
+                else
+                {
+                    if(quantita == 0)
+                    {
+                        return 2;//quantità esaurita
+                    }
+                    return 3;//fondi insufficienti
+                }
                 
-                updateEsamisuperati.setInt(1, idOggettiInVendita);
-                updateEsamisuperati.setInt(2, idCliente);
-                updateEsamisuperati.setInt(3, voto);
-                updateEsamisuperati.setString(4, descrizione);
+                aggiornaSaldoVenditore.setDouble(1, saldoV);
+                aggiornaSaldoVenditore.setInt(2, getIdVenditore(idOggettiInVendita));
                 
-                int r1 = updatePianodistudi.executeUpdate();
-                int r2 = updateEsamisuperati.executeUpdate();
+                aggiornaSaldoCliente.setDouble(1, saldoC);
+                aggiornaSaldoCliente.setInt(2, idCliente);
                 
-                if(r1 != 1 || r2 != 1)
+                aggiornaQuantitaOggetto.setInt(1, quantita);
+                aggiornaQuantitaOggetto.setInt(2, idOggettiInVendita);
+                
+                
+                
+                
+                
+                int r1 = aggiornaSaldoVenditore.executeUpdate();
+                int r2 = aggiornaSaldoCliente.executeUpdate();
+                int r3 = aggiornaQuantitaOggetto.executeUpdate();
+                
+                if(r1 != 1 || r2 != 1 || r3 != 1)
                 {
                     conn.rollback();
                 }
                 conn.commit();
+                return 1;//pagamentoAvvenuto con successo
             }
             catch(SQLException e)
             {
@@ -428,10 +548,12 @@ public class UtentiFactory {
             }
             finally
             {
-                if(updatePianodistudi != null)
-                    updatePianodistudi.close();
-                if(updateEsamisuperati != null)
-                    updateEsamisuperati.close();
+                if(aggiornaSaldoVenditore != null)
+                    aggiornaSaldoVenditore.close();
+                if(aggiornaSaldoCliente != null)
+                    aggiornaSaldoCliente.close();
+                if(aggiornaQuantitaOggetto != null)
+                    aggiornaQuantitaOggetto.close();
                 conn.setAutoCommit(true);
                 conn.close();
             }

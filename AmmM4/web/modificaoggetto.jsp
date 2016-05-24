@@ -1,6 +1,6 @@
 <%-- 
-    Document   : venditore
-    Created on : 25-apr-2016, 13.19.43
+    Document   : modificaoggetto
+    Created on : 24-mag-2016, 20.10.55
     Author     : Alessandro Mainas
 --%>
 
@@ -17,21 +17,20 @@ Pagina del Venditore
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Alessandro Mainas">
-        <meta name="description" content="pagina del venditore">
+        <meta name="description" content="modifica oggetti">
         <link href="style.css" rel="stylesheet" type="text/css" media="screen">
         <link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet' type='text/css'>
     </head>
     <body>
         <jsp:include page="header.jsp"/>
-        <h2 class="pageid">Venditore</h2>
+        <h2 class="pageid">Modifica Oggetto</h2>
         <nav class="navbar">
             <a href="login.jsp">Log in</a> 
             <a href="descrizione.jsp">Descrizione</a>
         </nav>
         <div class="page">
-            <c:choose>
-            <c:when test="${loggedIn == true && venditore.getId()==id}">
-                <h3>Metti in vendita un nuovo prodotto:</h3>
+           
+                <h3>Modifica l'oggetto selezionato:</h3>
                 <div class="form_logo"></div>
                     <form method="post" action="venditore.html">
                             <div class="form-label">
@@ -65,15 +64,10 @@ Pagina del Venditore
                                 <input type="number" name="quantity" id="quantity">
                             </div>
                         <div>
-                            <input type="submit" name="Submit" value="Conferma">
+                            <input type="submit" name="Modifica" value="Modifica">
                         </div>
                     </form>
                 <button name="Controller" type="submit" value="controller"><a href="controller.jsp">AREA PERSONALE</a></button>
-            </c:when>
-        <c:otherwise>
-            <jsp:include page="access_denied.jsp"/>
-        </c:otherwise>
-    </c:choose>
         </div>
         <jsp:include page="footer.jsp"/>
     </body>
