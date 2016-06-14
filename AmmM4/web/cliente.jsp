@@ -20,6 +20,8 @@ Pagina Cliente
         <meta name="description" content="Pagina relativa al cliente">
         <link href="style.css" rel="stylesheet" type="text/css" media="screen">
         <link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet' type='text/css'>
+        <script src="js/jquery-2.2.4.min.js" type="text/javascript"></script>
+        <script src="js/filter.js" type="text/javascript"></script>
     </head>
     <body>
         <jsp:include page="header.jsp"/>
@@ -33,7 +35,15 @@ Pagina Cliente
             <c:choose>
             <c:when test="${loggedIn == true && cliente.getId()==id}">
             <h3>Scegli i prodotti:</h3>
-            <table> <!-- Tabella contenente i prodotto acquistabili dai clienti -->
+            
+            <div id="ricerca">
+                    <label for="filtra">Ricerca</label>
+                    <input type="text" id="filtra"/>
+                    </div>        
+                    
+                
+            
+            <table id="table"> <!-- Tabella contenente i prodotto acquistabili dai clienti -->
                 <tr class="intestazionetab">
                     <th>Foto</th>
                         <th>Nome</th>
@@ -59,8 +69,8 @@ Pagina Cliente
                                     <td class="link"><a href="cliente.html?idOggetto=${oggetto.getId()}">Aggiungi al carrello</a></td>
                 </tr>
                 </c:forEach>
-                
-            <table class="tabellapiccola"> <!-- Tabella contenente i prodotto acquistabili dai clienti -->
+            </table>
+            <table id="tabellapiccola"> <!-- Tabella contenente i prodotto acquistabili dai clienti -->
                 <tr class="intestazionetab">
                     <th>Foto</th>
                         <th>Nome</th>
@@ -85,7 +95,7 @@ Pagina Cliente
                 </tr>
                 </c:forEach>
             </table>
-           
+            <p id="objnotfound"></p>
           </c:when>
         <c:otherwise>
             <jsp:include page="access_denied.jsp"/>

@@ -418,6 +418,44 @@ public class UtentiFactory {
         }
         return lista;
     }
+    //Rendere la lista degli oggetti che contengono text nel nome o nella descrizione
+    public ArrayList<OggettiInVendita> getOggettiInVendita(String text)
+    {
+        ArrayList<OggettiInVendita> lista = new ArrayList<OggettiInVendita>();
+        try 
+        {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "mariorossi", "0");
+            String query = "select * from "
+            + "oggetto_in_vendita where nome LIKE ? OR descrizione LIKE ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            // Assegna dati
+            text = "%"+text+"%";//prendo qualsiasi combinazione che contenga "text"
+            stmt.setString(1, text);
+            stmt.setString(2, text);
+            ResultSet set = stmt.executeQuery();
+             // ciclo sulle righe restituite
+            while(set.next()) 
+            {
+                OggettiInVendita o = new OggettiInVendita();
+                    o.setId(set.getInt("id"));//nomi delle colonne database
+                    o.setName(set.getString("nome"));
+                    o.setImageURL(set.getString("imageURL"));
+                    o.setDescription(set.getString("descrizione"));
+                    o.setPrice(set.getDouble("prezzo"));
+                    o.setQuantity(set.getInt("quantita"));
+                lista.add(o);
+            }
+            
+            stmt.close();
+            conn.close();
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        return lista;
+    }
     public Integer getIdVenditore(Integer idOggettiInVendita){
         Integer idVenditore=0;
         try{

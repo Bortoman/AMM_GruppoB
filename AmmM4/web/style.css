@@ -245,13 +245,23 @@ section p{
     border-top-right-radius: 6px;
     box-shadow: 2px 2px 5px rgba(175,175,175,0.7);
 }
-.tabellapiccola{/*tabella per visualizzazione al di sotto dei 768px*/
+#tabellapiccola{/*tabella per visualizzazione al di sotto dei 768px*/
+    
     display: none;
+}
+#objnotfound{
+    color: #990000;
+    position: relative;
+    text-align: center;
+    font-size: 30pt;
+    font-weight: bold;
+    top: 15%;
+    
 }
 table{
     position:relative;
     width: 90%;
-    top:40px;
+    top:60px;
     left:5%;
     border-collapse: collapse;
     box-shadow: 2px 2px 5px rgba(175,175,175,0.7);
@@ -322,6 +332,7 @@ td a:hover{
     bottom:20px;
     left:20px;
 }
+
 form{
     position: relative;
     width:40%;
@@ -331,6 +342,13 @@ form{
     background: rgba(120,120,120,0.9);
     border-radius: 6px;
     box-shadow: 2px 2px 5px rgba(175,175,175,0.7);
+}
+#ricerca{
+    position: relative;
+    left: 0px;
+    top: 46px;
+    background: none;
+    box-shadow: none;
 }
 form input, form textarea{ /*contenuto input*/
     width: 65%;
@@ -360,7 +378,7 @@ form label{/*contenuto label*/
     color: white;
     text-transform: uppercase;
 }
-.form-label{/*contenitore label*/
+.form-label {/*contenitore label*/
     position: relative;
     width:32%;
     height: 50px;
@@ -372,6 +390,14 @@ form label{/*contenuto label*/
     border: solid orangered;
     border-radius: 6px;
     box-shadow: 2px 2px 5px rgba(175,175,175,0.7);
+}
+#ricerca label{
+    padding: 12px;
+    position: relative;
+    top:2px;
+    font-size: 12pt;
+    font-weight: bold;
+    left: 10px;
 }
 .recap{ 
     position: relative;
@@ -606,7 +632,8 @@ footer a{
     table{
         display: none;
     }
-    .tabellapiccola{
+    #tabellapiccola{
+        top:60px;
         display: inline-block;
     }
 }
@@ -779,13 +806,21 @@ footer a{
         left: 5%;
         margin-bottom: 150px;
     }
+    #ricerca label{
+    padding: 14px;
+    position: relative;
+    top:2px;
+    font-size: 12pt;
+    left: 20px;
+    }
     textarea{
         max-width: 65%;
     }
     .intestazionetab{
         font-size: 10pt;
     }
-    .tabellapiccola{
+    #tabellapiccola{
+        top:60px;
         font-size: 10pt;
         position: relative;
         margin-bottom: 200px;
@@ -803,8 +838,10 @@ footer a{
 }
 @media only screen and (max-width: 380px){
     /*Schermi ancora più piccoli necessitano una tabella più stretta*/
-    .tabellapiccola{
+    
+    #tabellapiccola{
         position:relative;
+        font-size: 2pt;
         width: 90%;
         top:40px;
         left:1px;
@@ -813,9 +850,8 @@ footer a{
     .qty{
         width: 4px;
     }
-    .quantita{
-        font-size: 6pt;
-    }
+    
+    
     /*diminuisco i font delle label nei form o si disporrebbe su due righe*/
     form label{
         font-size: 10pt;
