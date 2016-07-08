@@ -331,15 +331,15 @@ public class UtentiFactory {
             Connection c = DriverManager.getConnection(connectionString, "mariorossi", "0");
             
             String query = "INSERT INTO oggetto_in_vendita (id, nome, imageURL, descrizione, prezzo, quantita, idVenditore)"
-                            + " VALUES (?, ?, ?, ?, ?, ?, ?)";
+                            + " VALUES (default, ?, ?, ?, ?, ?, ?)";
            PreparedStatement stmt = c.prepareStatement(query);
-            stmt.setInt(1, getOggettiInVendita().size());
-            stmt.setString(2, name);
-            stmt.setString(3, imageURL);
-            stmt.setString(4, description);
-            stmt.setDouble(5, price);
-            stmt.setInt(6, quantity);
-            stmt.setInt(7, idVenditore);
+            
+            stmt.setString(1, name);
+            stmt.setString(2, imageURL);
+            stmt.setString(3, description);
+            stmt.setDouble(4, price);
+            stmt.setInt(5, quantity);
+            stmt.setInt(6, idVenditore);
             
             //Esegui query
            

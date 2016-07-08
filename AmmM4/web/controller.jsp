@@ -30,12 +30,12 @@
         <h3>
             Lista dei tuoi articoli
         </h3>
-        <table> <!-- Tabella contenente i prodotto acquistabili dai clienti -->
+        <table> <!-- Tabella contenente i prodotti del venditore -->
                 <tr class="intestazionetab">
                     <th>Foto</th>
                         <th>Nome</th>
-                            <th>Descrizione</th>
-                                <th>Prezzo</th>
+                            <th>Prezzo</th>
+                                <th>Quantità</th>
                                     <th>Elimina</th>
                                         <th>Modifica</th>
                 </tr>
@@ -58,13 +58,14 @@
                 </c:forEach>
         </table>
                 
-            <table class="tabellapiccola"> <!-- Tabella contenente i prodotto acquistabili dai clienti -->
+            <table id="tabellapiccola"> <!-- Tabella contenente i prodotti del venditore -->
                 <tr class="intestazionetab">
                     <th>Foto</th>
                         <th>Nome</th>
                                 <th>Prezzo</th>
-                                    <th class="quantita">Quantità</th>
-                                        <th>Link</th>
+                                    <th class="quantita">Qty</th>
+                                        <th>Elimina</th>
+                                        <th>Modifica</th>
                 </tr>
                 <c:forEach var="oggetto" items="${venditore.getOggettiVenditore()}">
                     <c:choose>
@@ -79,7 +80,8 @@
                        <td>${oggetto.getName()}</td>
                                 <td> $ ${oggetto.getPrice()} </td>
                                     <td class="qty"> ${oggetto.getQuantity()}</td>
-                                    <td class="link"><a href="Cliente?id=${oggetto.getId()}"></a></td>
+                                    <td><a href="venditore.html?idOggettodaEliminare=${oggetto.getId()}"> </a></td>
+                                    <td><a href="venditore.html?idOggettodaModificare=${oggetto.getId()}"> </a></td>
                 </tr>
                 </c:forEach>
             </table>

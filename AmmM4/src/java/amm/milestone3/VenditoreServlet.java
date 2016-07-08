@@ -42,7 +42,8 @@ public class VenditoreServlet extends HttpServlet {
         
         
         if(request.getParameter("Submit")!=null){
-            
+            if(request.getParameter("name").isEmpty() || request.getParameter("imgURL").isEmpty() || request.getParameter("description").isEmpty() ||  request.getParameter("price").isEmpty() || request.getParameter("quantity").isEmpty())
+                request.getRequestDispatcher("venditore.jsp").forward(request, response);
             String name = request.getParameter("name");
             String imgURL = request.getParameter("imgURL");
             String description = request.getParameter("description");
@@ -74,11 +75,21 @@ public class VenditoreServlet extends HttpServlet {
                 request.getRequestDispatcher("modificaoggetto.jsp").forward(request, response);
         }
         if(request.getParameter("Modifica")!=null){
-            String name = request.getParameter("name");
-            String imgURL = request.getParameter("imgURL");
-            String description = request.getParameter("description");
-            Double price = Double.parseDouble(request.getParameter("price"));
-            Integer quantity = Integer.parseInt(request.getParameter("quantity"));
+            String name= UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idOggetto"))).getName();
+            String imgURL= UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idOggetto"))).getImageURL();
+            String description= UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idOggetto"))).getDescription();
+            Double price= UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idOggetto"))).getPrice();
+            Integer quantity = UtentiFactory.getInstance().getOggetto(Integer.parseInt(request.getParameter("idOggetto"))).getQuantity();
+            if(!request.getParameter("name").isEmpty())
+                name = request.getParameter("name");
+            if(!request.getParameter("imgURL").isEmpty())
+                imgURL = request.getParameter("imgURL");
+            if(!request.getParameter("description").isEmpty())
+                description = request.getParameter("description");
+            if(!request.getParameter("price").isEmpty())
+                price = Double.parseDouble(request.getParameter("price"));
+            if(!request.getParameter("quantity").isEmpty())
+                quantity = Integer.parseInt(request.getParameter("quantity"));
             Integer idOggetto = Integer.parseInt(request.getParameter("idOggetto"));
             UtentiFactory.getInstance().modificaOggetto(idOggetto, name, imgURL, description, price, quantity);
             session.setAttribute("listaOggettiVenditore", UtentiFactory.getInstance().getVenditore((Integer)session.getAttribute("id")).getOggettiVenditore());//aggiornamento lista
