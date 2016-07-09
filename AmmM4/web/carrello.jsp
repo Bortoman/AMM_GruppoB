@@ -4,6 +4,7 @@
     Author     : Alessandro
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,20 +26,27 @@
             <a href="descrizione.jsp">Descrizione</a>
         </nav>
         <div class="page">
-        <h3>
-            Carrello
-        </h3>
-        <div class="recap">
-            <ul>
-                <li>${oggetto.getName()}</li>
+            <c:choose>
+                <c:when test="${loggedIn == true && cliente.getId()==id}">
+            <h3>
+                Carrello
+            </h3>
+            <div class="recap">
+                <ul>
+                    <li>${oggetto.getName()}</li>
                     <li><image src="${oggetto.getImageURL()}" width="300" heigth="300"></li>
-                        <li>${oggetto.getDescription()}</li>
-                             <li>${oggetto.getPrice()}</li>
-                                 <li> ${oggetto.getQuantity()}</li>
-            </ul>
-                                 <button name="Submit" type="submit" value="conferma"><a href="cliente.html?idoggVenduto=${oggetto.getId()}">CONFERMA ACQUISTO</a></button>
-                                 <p>${pagato}</p>
-        </div>
+                    <li>${oggetto.getDescription()}</li>
+                    <li>${oggetto.getPrice()}</li>
+                    <li> ${oggetto.getQuantity()}</li>
+                </ul>
+                <a href="cliente.html?idoggVenduto=${oggetto.getId()}">CONFERMA ACQUISTO</a>
+                <p>${pagato}</p>
+            </div>
+                </c:when>
+                <c:otherwise>
+                    <jsp:include page="access_denied.jsp"/>
+                </c:otherwise>
+            </c:choose>
         </div>
         <jsp:include page="footer.jsp"/>
     </body>

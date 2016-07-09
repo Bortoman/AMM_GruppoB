@@ -38,33 +38,29 @@ public class Filter extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-        
-        
-        String command = request.getParameter("cmd");
-        if (command != null) 
-        {
-            // Verifica che commando e id siano stati impostati
-            if (command.equals("search")) 
-            {
-                
-                
-                // Esegue la ricerca
-                ArrayList<OggettiInVendita> listaOggetti = UtentiFactory.getInstance()
-                        .getOggettiInVendita(request.getParameter("text"));
-                // Imposto la lista come attributo della request, come facevamo per l'HTML
-                request.setAttribute("listaOggetti", listaOggetti);
-                
-                // Quando si restituisce del json e' importante segnalarlo ed evitare il caching
-                response.setContentType("application/json");
-                response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
-                response.setHeader("Cache-Control", "no-store, no-cache, "
-                        + "must-revalidate");
-                // Genero il json con una jsp
-                request.getRequestDispatcher("listaOggetti.jsp").
-                        forward(request, response);
+
+            String command = request.getParameter("cmd");
+            if (command != null) {
+                // Verifica che commando e id siano stati impostati
+                if (command.equals("search")) {
+
+                    // Esegue la ricerca
+                    ArrayList<OggettiInVendita> listaOggetti = UtentiFactory.getInstance()
+                            .getOggettiInVendita(request.getParameter("text"));
+                    // Imposto la lista come attributo della request, come facevamo per l'HTML
+                    request.setAttribute("listaOggetti", listaOggetti);
+
+                    // Quando si restituisce del json e' importante segnalarlo ed evitare il caching
+                    response.setContentType("application/json");
+                    response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
+                    response.setHeader("Cache-Control", "no-store, no-cache, "
+                            + "must-revalidate");
+                    // Genero il json con una jsp
+                    request.getRequestDispatcher("listaOggetti.jsp").
+                            forward(request, response);
+                }
             }
-        }
-    
+
         }
     }
 

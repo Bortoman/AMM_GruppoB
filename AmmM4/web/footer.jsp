@@ -13,4 +13,5 @@
                 alt="CSS Valido!" />
         </a>
     </p>
+    <p class="saldo"> Saldo: $ ${saldo}</p>
 </footer>
