@@ -3,7 +3,7 @@
     Created on : 25-apr-2016, 10.25.07
     Author     : Alessandro Mainas
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <footer>
     <p>
@@ -13,5 +13,8 @@
                 alt="CSS Valido!" />
         </a>
     </p>
-    <p class="saldo"> Saldo: $ ${saldo}</p>
+    <c:if test="${ loggedIn == true}">
+        <p class="saldo"> Saldo: $ ${saldo}</p>
+    </c:if>
+    
 </footer>

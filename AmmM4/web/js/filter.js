@@ -29,6 +29,7 @@ $(document).ready(function ()
 
 
             if (listaOggetti.length !== 0) {
+                $("#objnotfound").empty();
                 $(".pari").empty();
                 $(".dispari").empty();
 
