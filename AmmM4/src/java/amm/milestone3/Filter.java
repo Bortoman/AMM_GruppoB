@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,9 +38,11 @@ public class Filter extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        HttpSession session = request.getSession(false);
 
             String command = request.getParameter("cmd");
+            boolean loggedIn = (boolean)session.getAttribute("loggedIn");
+            if (loggedIn == true){
             if (command != null) {
                 // Verifica che commando e id siano stati impostati
                 if (command.equals("search")) {
@@ -62,6 +65,7 @@ public class Filter extends HttpServlet {
             }
 
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
