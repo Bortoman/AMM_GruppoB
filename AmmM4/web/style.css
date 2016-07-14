@@ -331,6 +331,20 @@ td a:hover{
     bottom:20px;
     left:20px;
 }
+.areaPersonale a, .conferma_button{
+    background-color: orangered;
+    border-radius: 6px;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+.areaPersonale a:visited, .conferma_button:visited{
+    color: white;
+    text-decoration: none;
+}
+.areaPersonale a:hover, .conferma_button:hover{
+    background-color: orange;
+}
 
 form{
     position: relative;
@@ -382,7 +396,7 @@ form label{/*contenuto label*/
     width:32%;
     height: 50px;
     top:62px;
-    background-image: url('images/Form-pattern.jpg');
+    background-color: orangered;
     left: -5px;
     text-align: center;
     z-index: 1;
@@ -437,7 +451,7 @@ input[type=button], input[type=submit], input[type=button]:focus, input[type=sub
     /*Sia che il bottone sia o meno selezionato non eredita le proprietà del campo input:focus*/
     margin: 150px 1% 1% 1%;
     width:98%;
-    background-image: url('images/Form-pattern.jpg');
+    background-image: url('images/Orangered.png');
     border: solid orangered;
     color:white;
     text-align: center;

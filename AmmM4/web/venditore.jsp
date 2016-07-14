@@ -69,7 +69,7 @@ Pagina del Venditore
                         </div>
                     </form>
                 <div class='areaPersonale'>
-                <button name="Controller" type="submit" value="controller"><a href="controller.jsp">AREA PERSONALE</a></button>
+                <a href="controller.jsp">AREA PERSONALE</a>
                 </div>
             </c:when>
         <c:otherwise>

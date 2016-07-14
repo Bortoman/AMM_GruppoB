@@ -43,6 +43,7 @@ public class Filter extends HttpServlet {
             String command = request.getParameter("cmd");
             boolean loggedIn = (boolean)session.getAttribute("loggedIn");
             if (loggedIn == true){
+                //controllo che l'utente sia loggato
             if (command != null) {
                 // Verifica che commando e id siano stati impostati
                 if (command.equals("search")) {
